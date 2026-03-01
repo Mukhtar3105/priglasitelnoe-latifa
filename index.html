@@ -28,38 +28,66 @@ body{
   overflow-x:hidden;
 }
 
-/* background */
 .bg{position:fixed;inset:0;background:url("./Background.png") center/cover no-repeat;z-index:-3}
 .veil{position:fixed;inset:0;background:radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.62), rgba(255,255,255,.12));z-index:-2}
 
-/* layout */
-.wrap{width:min(var(--maxw),92vw);margin:auto;padding:24px 0 100px}
+.wrap{width:min(var(--maxw),92vw);margin:auto;padding:24px 0 120px}
 section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
-.card{background:var(--card);border-radius:26px;padding:26px 18px;box-shadow:var(--shadow)}
+
+.card{
+  position:relative;
+  background:var(--card);
+  border-radius:26px;
+  padding:26px 18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+/* декор */
+.decor{
+  position:absolute;
+  pointer-events:none;
+  opacity:.9;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,.08));
+}
+.d1{width:220px;left:-60px;top:10px;animation:float 8s ease-in-out infinite}
+.d2{width:240px;right:-70px;top:20px;animation:float 10s ease-in-out infinite}
+.d3{width:200px;left:-60px;bottom:10px;animation:float 7s ease-in-out infinite}
+.d4{width:220px;right:-60px;bottom:10px;animation:float 9s ease-in-out infinite}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
 
 /* typography */
 .script{font-family:"Great Vibes",cursive;color:var(--rose)}
-.title-name{font-size:72px;line-height:1}
+.title-name{font-size:72px}
 .caps{text-transform:uppercase;letter-spacing:.14em;color:var(--rose2);font-size:20px;margin:0}
 
-/* year */
 .yearline{display:flex;justify-content:center;gap:10px;margin-top:10px}
 .digit-one{
   font-family:"Cinzel",serif;
   font-size:38px;
   font-weight:600;
-  color:rgba(180,122,134,.92);
-  text-shadow:0 10px 22px rgba(180,122,134,.18),0 2px 0 rgba(255,255,255,.55);
+  color:rgba(180,122,134,.95);
+  text-shadow:0 8px 20px rgba(180,122,134,.25);
 }
 .yearword{font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose2)}
 
 .divider{height:1px;width:80%;margin:18px auto;background:rgba(0,0,0,.18)}
 
-/* butterfly */
-.hero-butterfly{width:96px;margin:10px auto;animation:bob 2.8s ease-in-out infinite;cursor:pointer}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+.hero-butterfly{
+  width:96px;
+  margin:12px auto;
+  animation:bob 3s ease-in-out infinite;
+  cursor:pointer;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(10px)}
+}
 
-/* invite & place style */
 .block-text{
   margin-top:12px;
   font-size:20px;
@@ -69,46 +97,47 @@ section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
   line-height:1.75;
 }
 
-/* map button */
-.mapbtn{
+/* кнопки */
+.mapbtn,.btn{
   display:inline-block;
   margin-top:18px;
   padding:14px 24px;
   border-radius:999px;
-  background:rgba(180,122,134,.84);
+  background:rgba(180,122,134,.85);
   color:#fff;
   text-decoration:none;
   text-transform:uppercase;
   letter-spacing:.12em;
   box-shadow:var(--shadow2);
+  border:none;
+  cursor:pointer;
 }
 
-/* calendar */
-.cal{margin-top:18px;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.46)}
-.dow,.grid{display:grid;grid-template-columns:repeat(7,1fr)}
-.dow div{padding:10px 0;font-size:14px}
-.grid div{padding:12px 0;position:relative}
-.grid .sel{font-weight:800}
-.grid .sel::after{
-  content:"";
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width:38px;height:38px;
-  border-radius:50%;
-  background:rgba(180,122,134,.18);
-  z-index:-1;
+/* форма */
+.form{display:grid;gap:14px;margin-top:16px}
+.input{
+  width:100%;
+  padding:14px 16px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.6);
+  font-size:16px;
 }
-.butterfly-behind{
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-50%,-58%);
-  width:56px;
-  z-index:-2;
-  animation:bob 3s ease-in-out infinite;
+.radios{display:grid;gap:10px;text-align:left}
+.radio{display:flex;gap:10px;font-size:18px}
+.radio input{accent-color:var(--rose)}
+
+.status{margin-top:6px;font-size:14px;color:rgba(0,0,0,.6)}
+
+.footer-note{
+  margin-top:18px;
+  font-size:16px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.55);
 }
 
-/* music */
+/* музыка */
 .music-hint{
   position:fixed;
   bottom:90px;
@@ -117,26 +146,62 @@ section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
   background:rgba(255,255,255,.9);
   padding:10px 16px;
   border-radius:999px;
-  font-size:14px;
   box-shadow:0 8px 22px rgba(0,0,0,.18);
   display:none;
 }
-.music-hint.show{display:flex;align-items:center;gap:8px}
-.music-hint span{font-size:18px}
+.music-hint.show{display:flex;gap:8px;align-items:center}
 
-/* modal */
-.music-modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.18);z-index:9999;padding:18px}
+.music-modal{
+  position:fixed;inset:0;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  background:rgba(0,0,0,.18);
+  z-index:9999;
+  padding:18px;
+}
 .music-modal.show{display:flex}
-.music-sheet{background:rgba(255,255,255,.9);border-radius:22px;padding:18px;width:100%;max-width:520px}
+
+.music-sheet{
+  background:rgba(255,255,255,.9);
+  border-radius:22px;
+  padding:18px;
+  width:100%;
+  max-width:520px;
+  text-align:center;
+}
+
 .music-actions{display:flex;gap:12px;justify-content:center;margin-top:10px}
-.chip{padding:12px 18px;border-radius:999px;border:none;text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
-.chip.yes{background:rgba(180,122,134,.88);color:#fff}
+.chip{
+  padding:12px 18px;
+  border-radius:999px;
+  border:none;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  cursor:pointer;
+}
+.chip.yes{background:rgba(180,122,134,.9);color:#fff}
 .chip.no{background:#eee}
 
-/* floating button */
-.music-fab{position:fixed;right:14px;bottom:14px;background:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 18px 48px rgba(0,0,0,.16);display:flex;align-items:center;gap:10px}
-.music-fab button{width:44px;height:44px;border-radius:50%;border:none;background:rgba(180,122,134,.88);color:#fff}
-
+.music-fab{
+  position:fixed;
+  right:14px;
+  bottom:14px;
+  background:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  box-shadow:0 18px 48px rgba(0,0,0,.16);
+  display:none;
+  gap:10px;
+  align-items:center;
+}
+.music-fab button{
+  width:44px;height:44px;
+  border-radius:50%;
+  border:none;
+  background:rgba(180,122,134,.9);
+  color:#fff;
+}
 </style>
 </head>
 
@@ -148,9 +213,7 @@ section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
   <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3">
 </audio>
 
-<div class="music-hint" id="musicHint">
-  <span>🎵</span> Музыкалық сүйемелдеу
-</div>
+<div class="music-hint" id="musicHint"><span>🎵</span> Музыкалық сүйемелдеу</div>
 
 <div class="music-modal" id="musicModal">
   <div class="music-sheet">
@@ -162,14 +225,16 @@ section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
   </div>
 </div>
 
-<div class="music-fab" id="musicFab" style="display:none">
+<div class="music-fab" id="musicFab">
   <button id="musicToggle">▶</button>
-  <div class="caps" id="musicLabel">Музыка</div>
+  <div class="caps">Музыка</div>
 </div>
 
 <main class="wrap">
 
 <section>
+  <img src="./element_2.png" class="decor d2">
+  <img src="./element_3.png" class="decor d1">
   <div class="card">
     <div class="script title-name">Латифа</div>
     <div class="yearline">
@@ -184,6 +249,8 @@ section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
 </section>
 
 <section>
+  <img src="./element_1.png" class="decor d3">
+  <img src="./element_4.png" class="decor d4">
   <div class="card">
     <div class="script" style="font-size:46px">Дорогие гости!</div>
     <div class="block-text">
@@ -208,20 +275,22 @@ section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
   </div>
 </section>
 
-<section>
-  <div class="card">
-    <div class="script" style="font-size:46px">Дата торжества</div>
-    <div class="block-text">
-      11 АПРЕЛЯ 2026 ГОДА<br>
-      ВРЕМЯ 14:00
-    </div>
-  </div>
-</section>
-
 <section id="rsvp">
   <div class="card">
-    <div class="caps">Подтвердите присутствие</div>
-    <!-- форма оставлена без изменений -->
+    <p class="caps">Подтвердите, пожалуйста, своё присутствие</p>
+    <form class="form" id="rsvpForm">
+      <input class="input" name="name" placeholder="Ваше имя" required>
+      <div class="radios">
+        <label class="radio"><input type="radio" name="attendance" value="Приду" required> Приду</label>
+        <label class="radio"><input type="radio" name="attendance" value="Приду с парой"> Приду с парой</label>
+        <label class="radio"><input type="radio" name="attendance" value="Не смогу"> Не смогу</label>
+      </div>
+      <button class="btn">Отправить</button>
+      <div class="status" id="status"></div>
+    </form>
+    <div class="footer-note">
+      Будем рады Вас видеть!<br>Ожидаем Вашего визита.
+    </div>
   </div>
 </section>
 
@@ -248,14 +317,12 @@ yes.onclick=async()=>{
   fab.style.display='flex';
   toggle.textContent='❚❚';
 };
-
 no.onclick=()=>{
   modal.classList.remove('show');
   hint.classList.remove('show');
   fab.style.display='flex';
   toggle.textContent='▶';
 };
-
 toggle.onclick=()=>{
   if(bgm.paused){bgm.play();toggle.textContent='❚❚'}
   else{bgm.pause();toggle.textContent='▶'}
