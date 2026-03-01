@@ -90,33 +90,6 @@
       margin:0;
     }
 
-    /* ✅ красивая “1” в "1 годик" */
-    .yearline{
-      margin-top: 10px;
-      display:flex;
-      justify-content:center;
-      align-items:baseline;
-      gap: 10px;
-    }
-    .digit-one{
-      font-family: "Cinzel", serif;
-      font-weight:600;
-      font-size: 40px;
-      line-height: 1;
-      letter-spacing: .02em;
-      color: rgba(180,122,134,.92);
-      text-shadow:
-        0 10px 22px rgba(180,122,134,.18),
-        0 2px 0 rgba(255,255,255,.55);
-      opacity: .98;
-    }
-    .yearword{
-      font-size:20px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--rose2);
-    }
-
     .divider{
       height:1px;
       width:min(360px,82%);
@@ -399,6 +372,12 @@
     .d3{ width:min(190px, 42vw); left:-50px; bottom: 8px; }
     .d4{ width:min(200px, 44vw); right:-52px; bottom: 6px; }
 
+    /* ✅ ДОБАВИЛ: больше цветочков по бокам */
+    .d5{ width:min(180px, 38vw); left:-60px; top: 42%; opacity:.85; }
+    .d6{ width:min(190px, 40vw); right:-64px; top: 44%; opacity:.85; }
+    .d7{ width:min(160px, 34vw); left:-58px; top: 62%; opacity:.80; }
+    .d8{ width:min(170px, 36vw); right:-60px; top: 64%; opacity:.80; }
+
     @keyframes floaty{
       0%,100%{ transform: translate3d(0,0,0) rotate(0deg); }
       50%{ transform: translate3d(0,-10px,0) rotate(1deg); }
@@ -525,8 +504,6 @@
 
     @media(max-width:420px){
       .caps{ font-size: 18px; }
-      .digit-one{ font-size: 38px; }
-      .yearword{ font-size: 18px; }
       .hero-butterfly{ width: 90px; }
       .unit{ min-width: 78px; }
       .flip{ font-size: 30px; }
@@ -547,7 +524,6 @@
   <div class="music-modal" id="musicModal" aria-hidden="true">
     <div class="music-sheet">
       <div class="music-top">
-        <!-- иконка ноты -->
         <svg class="note-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M14 3v12.2a3.3 3.3 0 1 0 2 3V7.6l6-1.5V3.3L14 3Z" fill="currentColor"/>
           <path d="M6 5v11.2a3.3 3.3 0 1 0 2 3V9.6l6-1.5V5.3L6 5Z" fill="currentColor" opacity=".55"/>
@@ -577,11 +553,18 @@
 
     <!-- 1) HERO -->
     <section>
+      <!-- существующие -->
       <img class="decor d2 float slow" src="./element_2.png" alt="">
       <img class="decor d1 float" src="./element_3.png" alt="">
-      <div class="card">
 
-        <!-- ✅ ЗАМЕНА ТЕКСТА НА КАРТИНКУ -->
+      <!-- ✅ ДОБАВИЛ: больше цветочков по бокам -->
+      <img class="decor d5 float fast" src="./element_1.png" alt="">
+      <img class="decor d6 float" src="./element_4.png" alt="">
+      <img class="decor d7 float slow" src="./element_3.png" alt="">
+      <img class="decor d8 float fast" src="./element_2.png" alt="">
+
+      <div class="card">
+        <!-- ✅ Ваше изображение с текстом -->
         <img src="./element_7.png" alt="Латифа 1 годик Тұсаукесер" style="display:block;max-width:100%;margin:6px auto 10px;">
 
         <div class="divider"></div>
@@ -634,7 +617,6 @@
       <div class="card">
         <div class="script h-script">Дата торжества</div>
 
-        <!-- ✅ дата оформлена как "место проведения" -->
         <div class="place-lines" style="margin-top:10px;">
           11 АПРЕЛЯ 2026 ГОДА<br>
           14:00
