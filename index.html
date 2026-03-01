@@ -102,11 +102,19 @@
     .digit-one{
       font-family: "Cinzel", serif;
       font-weight:600;
-      font-size: 34px;
+      font-size: 38px;
       line-height: 1;
       letter-spacing: .02em;
-      color: rgba(0,0,0,.70);
-      text-shadow: 0 10px 22px rgba(0,0,0,.06);
+
+      /* ✅ пудрово-розовая (не чёрная) */
+      color: rgba(180,122,134,.92);
+
+      /* мягкая “дорогая” глубина */
+      text-shadow:
+        0 10px 22px rgba(180,122,134,.18),
+        0 2px 0 rgba(255,255,255,.55);
+
+      opacity: .98;
     }
     .yearword{
       font-size:20px;
@@ -133,7 +141,7 @@
       user-select:none;
     }
     .scroll-text{
-      margin-top: 22px; /* ниже ниже */
+      margin-top: 22px;
       cursor:pointer;
     }
     @keyframes bob{
@@ -202,9 +210,8 @@
       color: rgba(0,0,0,.72);
       font-variant-numeric: tabular-nums;
     }
-    .grid div.empty{
-      color: transparent;
-    }
+    .grid div.empty{ color: transparent; }
+
     .grid .sel{
       font-weight:800;
       color: rgba(0,0,0,.80);
@@ -222,14 +229,15 @@
       border: 1px solid rgba(180,122,134,.28);
       z-index:-1;
     }
-    /* ✅ Бабочка за цифрой 11 (строго по центру) */
+
+    /* ✅ Бабочка за цифрой 11 (центр) */
     .butterfly-behind{
       position:absolute;
       left:50%;
       top:50%;
       width:56px;
       transform: translate(-50%,-58%);
-      z-index:-2;           /* ниже цифры */
+      z-index:-2;
       opacity:.95;
       pointer-events:none;
       animation:flutter 3.2s ease-in-out infinite;
@@ -254,7 +262,7 @@
       line-height: 1.75;
     }
 
-    /* Location block - красивее, без “видимой ссылки” */
+    /* Location block */
     .place-lines{
       margin-top: 12px;
       font-size: 20px;
@@ -285,8 +293,6 @@
     .mapbtn:hover{ filter: brightness(1.03); }
     .mapbtn:active{ transform: scale(.99); }
     .mapbtn:visited{ color:#fff !important; }
-    .mapbtn::after{ content:none !important; }
-    .mapbtn *{ text-decoration:none !important; }
 
     .sign{
       margin-top: 26px;
@@ -532,10 +538,9 @@
       display:block;
     }
 
-    /* Small tweaks */
     @media(max-width:420px){
       .caps{ font-size: 18px; }
-      .digit-one{ font-size: 32px; }
+      .digit-one{ font-size: 36px; }
       .yearword{ font-size: 18px; }
       .date-main{ font-size: 24px; }
       .date-time{ font-size: 22px; }
@@ -550,12 +555,12 @@
   <div class="bg"></div>
   <div class="veil"></div>
 
-  <!-- Audio (файл рядом с html) -->
+  <!-- Audio -->
   <audio id="bgm" preload="auto" loop>
     <source src="./Erkesh_Hasen_-_yzym_(SkySound.cc).mp3" type="audio/mpeg">
   </audio>
 
-  <!-- ✅ Красивое уведомление (Да/Нет) -->
+  <!-- Music modal -->
   <div class="music-modal" id="musicModal" aria-hidden="true">
     <div class="music-sheet">
       <div class="title">Включить музыку?</div>
@@ -570,9 +575,7 @@
   <!-- Floating player control -->
   <div class="music-fab" id="musicFab" style="display:none;">
     <button type="button" id="musicToggle" aria-label="Музыка">
-      <!-- play/pause icon via inline svg -->
       <svg class="icon" id="musicIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <!-- default: play -->
         <path d="M9 7.5v9l8-4.5-8-4.5Z" fill="currentColor"></path>
       </svg>
     </button>
@@ -597,10 +600,7 @@
 
         <div class="divider"></div>
 
-        <!-- бабочка: клик -> к форме -->
         <img src="./element_6.png" class="hero-butterfly" id="scrollToForm1" alt="Прокрутить вниз">
-
-        <!-- ✅ текст ниже ниже -->
         <p class="caps scroll-text" id="scrollToForm2">Прокрутите вниз</p>
       </div>
     </section>
@@ -620,7 +620,7 @@
       </div>
     </section>
 
-    <!-- LOCATION (сразу после приглашения) -->
+    <!-- LOCATION -->
     <section>
       <img class="decor d2 float" src="./element_2.png" alt="">
       <img class="decor d1 float slow" src="./element_3.png" alt="" style="top:auto; bottom:10px;">
@@ -663,7 +663,7 @@
       </div>
     </section>
 
-    <!-- RSVP (в конце) -->
+    <!-- RSVP -->
     <section id="rsvp">
       <img class="decor d3 float" src="./element_1.png" alt="">
       <div class="card">
@@ -725,19 +725,16 @@
   </main>
 
   <script>
-    /* =========================================================
-       1) КАЛЕНДАРЬ: Апрель 2026, выделяем 11 (весь месяц)
-       ========================================================= */
+    /* 1) Calendar (April 2026) */
     (function buildCalendar(){
       const grid = document.getElementById('calendarGrid');
-      const year = 2026, monthIndex = 3; // 0=Jan, 3=Apr
+      const year = 2026, monthIndex = 3; // April
       const selectedDay = 11;
 
       const first = new Date(year, monthIndex, 1);
       const last  = new Date(year, monthIndex + 1, 0);
       const daysInMonth = last.getDate();
 
-      // JS: 0=Sun..6=Sat -> Monday-first
       const jsDay = first.getDay();
       const mondayFirst = (jsDay + 6) % 7;
 
@@ -755,7 +752,6 @@
         }else{
           if(dayNum === selectedDay){
             cell.className = 'sel';
-            // ✅ бабочка за “11”
             const b = document.createElement('img');
             b.src = './element_6.png';
             b.className = 'butterfly-behind';
@@ -768,18 +764,14 @@
       }
     })();
 
-    /* =========================================================
-       2) СКРОЛЛ: бабочка/текст “Прокрутите вниз” -> к форме
-       ========================================================= */
+    /* 2) Scroll to RSVP */
     function scrollToRSVP(){
       document.getElementById('rsvp').scrollIntoView({behavior:'smooth', block:'start'});
     }
     document.getElementById('scrollToForm1').addEventListener('click', scrollToRSVP);
     document.getElementById('scrollToForm2').addEventListener('click', scrollToRSVP);
 
-    /* =========================================================
-       3) COUNTDOWN: 11 апреля 2026, 14:00 (UTC+5)
-       ========================================================= */
+    /* 3) Countdown */
     const target = new Date('2026-04-11T14:00:00+05:00');
     const pad2 = n => String(n).padStart(2,'0');
 
@@ -802,9 +794,7 @@
     tick();
     setInterval(tick, 1000);
 
-    /* =========================================================
-       4) MUSIC: автозапуск + красивое окно Да/Нет + кнопка
-       ========================================================= */
+    /* 4) Music */
     const bgm = document.getElementById('bgm');
     const modal = document.getElementById('musicModal');
     const btnYes = document.getElementById('musicYes');
@@ -822,7 +812,6 @@
     }
 
     async function tryAutoPlay(){
-      // показываем FAB всегда, но после первой попытки
       fab.style.display = 'flex';
 
       const pref = localStorage.getItem('music_pref'); // "yes" | "no" | null
@@ -836,7 +825,6 @@
           setIcon(true);
           return;
         }catch(e){
-          // если браузер снова блокирует — покажем окно
           modal.classList.add('show');
           modal.setAttribute('aria-hidden','false');
           setIcon(false);
@@ -844,14 +832,10 @@
         }
       }
 
-      // Pref не задан — пробуем автозапуск
       try{
         await bgm.play();
         setIcon(true);
-        // не сохраняем автоматически — только если пользователь согласится, но автозапуск прошёл
-        // поэтому оставляем без pref, чтобы при следующем заходе снова пробовал
       }catch(e){
-        // блок — показываем окно Да/Нет
         modal.classList.add('show');
         modal.setAttribute('aria-hidden','false');
         setIcon(false);
@@ -885,7 +869,6 @@
           localStorage.setItem('music_pref','yes');
           setIcon(true);
         }catch(e){
-          // если блокирует — покажем окно
           modal.classList.add('show');
           modal.setAttribute('aria-hidden','false');
           setIcon(false);
@@ -897,16 +880,10 @@
       }
     });
 
-    // Запуск после загрузки
     window.addEventListener('load', tryAutoPlay);
 
-    /* =========================================================
-       5) RSVP -> Google Sheets (через Apps Script Web App)
-       =========================================================
-       Вставьте сюда URL деплоя Apps Script (Web app).
-    */
+    /* 5) RSVP -> Google Sheets (Apps Script Web App) */
     const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
-
     const form = document.getElementById('rsvpForm');
     const statusEl = document.getElementById('status');
 
@@ -944,34 +921,34 @@
       }
     });
 
-    /* =========================================================
-       ✅ Google Apps Script (вставьте в Apps Script)
-       =========================================================
-       function doPost(e) {
-         const SHEET_ID = "1FuukSHtopSmB9O97vWkRT6S3yv4caehpxQeg_QytRf4";
-         const SHEET_NAME = "Sheet1"; // или название Вашего листа
+    /*
+      Google Apps Script (вставить в Apps Script):
 
-         const ss = SpreadsheetApp.openById(SHEET_ID);
-         const sh = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
+      function doPost(e) {
+        const SHEET_ID = "1FuukSHtopSmB9O97vWkRT6S3yv4caehpxQeg_QytRf4";
+        const SHEET_NAME = "Sheet1"; // или Ваш лист
 
-         const body = JSON.parse(e.postData.contents);
+        const ss = SpreadsheetApp.openById(SHEET_ID);
+        const sh = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
 
-         if (sh.getLastRow() === 0) {
-           sh.appendRow(["Дата/время (ISO)", "Имя", "Статус", "Страница", "User-Agent"]);
-         }
+        const body = JSON.parse(e.postData.contents);
 
-         sh.appendRow([
-           body.timestamp || new Date().toISOString(),
-           body.name || "",
-           body.attendance || "",
-           body.page || "",
-           body.userAgent || ""
-         ]);
+        if (sh.getLastRow() === 0) {
+          sh.appendRow(["Дата/время (ISO)", "Имя", "Статус", "Страница", "User-Agent"]);
+        }
 
-         return ContentService
-           .createTextOutput(JSON.stringify({ ok: true }))
-           .setMimeType(ContentService.MimeType.JSON);
-       }
+        sh.appendRow([
+          body.timestamp || new Date().toISOString(),
+          body.name || "",
+          body.attendance || "",
+          body.page || "",
+          body.userAgent || ""
+        ]);
+
+        return ContentService
+          .createTextOutput(JSON.stringify({ ok: true }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
     */
   </script>
 </body>
