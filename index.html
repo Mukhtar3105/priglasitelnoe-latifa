@@ -14,7 +14,7 @@
   --ink:#2b2b2b;
   --rose:#b47a86;
   --rose2:#a96f7a;
-  --card:rgba(255,255,255,.62);
+  --card:rgba(255,255,255,.65);
   --shadow:0 12px 32px rgba(0,0,0,.12);
   --maxw:580px;
 }
@@ -28,7 +28,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
+/* background */
 .bg{
   position:fixed; inset:0;
   background:url("./Background.png") center/cover no-repeat;
@@ -36,35 +36,49 @@ body{
 }
 .veil{
   position:fixed; inset:0;
-  background:radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.70), rgba(255,255,255,.18));
+  background:radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.72), rgba(255,255,255,.18));
   z-index:-2;
 }
 
 .wrap{
   width:min(var(--maxw),92vw);
   margin:0 auto;
-  padding:20px 0 170px;
+  padding:20px 0 180px;
 }
+
 section{
   position:relative;
   padding:28px 12px;
   text-align:center;
 }
 
-/* ===== CARD ===== */
+/* card */
 .card{
-  position:relative;
   background:var(--card);
   border-radius:22px;
   padding:26px 18px;
   box-shadow:var(--shadow);
   backdrop-filter: blur(2px);
-  z-index:1;
 }
 
-/* ===== TYPO ===== */
+/* decor */
+.decor{
+  position:absolute;
+  pointer-events:none;
+  opacity:.9;
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+.dl{left:-64px;top:20px;width:220px}
+.dr{right:-70px;top:40px;width:230px}
+.db{left:-70px;bottom:-20px;width:240px}
+
+/* text */
 .script{font-family:"Great Vibes",cursive;color:var(--rose);}
-.title-name{font-size:clamp(56px,11vw,78px);line-height:1;}
+.title-name{font-size:78px;line-height:1}
 .caps{
   text-transform:uppercase;
   letter-spacing:.14em;
@@ -72,13 +86,35 @@ section{
   font-size:20px;
   margin:0;
 }
+
+/* decorative 1 */
+.one-decor{
+  font-family:"Great Vibes",cursive;
+  font-size:56px;
+  color:var(--rose);
+  margin-right:6px;
+}
+
 .divider{
   height:1px;
-  width:min(360px,82%);
+  width:80%;
   margin:18px auto;
   background:rgba(0,0,0,.2);
 }
 
+/* hero butterfly */
+.hero-butterfly{
+  width:96px;
+  margin:14px auto 0;
+  cursor:pointer;
+  animation:bob 2.6s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(8px)}
+}
+
+/* invite text */
 .invite{
   font-size:22px;
   letter-spacing:.10em;
@@ -88,194 +124,78 @@ section{
   color:rgba(0,0,0,.78);
 }
 
-/* ✅ красивая цифра "1" (не жирная) */
-.one-decor{
-  font-family:"Great Vibes",cursive;
-  font-weight:400;
-  font-size:56px;
-  color:var(--rose);
-  margin-right:6px;
-  vertical-align:middle;
-}
-
-/* ===== DECOR (везде, но не мешает тексту) ===== */
-.decor{
-  position:absolute;
-  pointer-events:none;
-  opacity:.92;
-  filter: drop-shadow(0 14px 22px rgba(0,0,0,.10));
-  z-index:0;
-}
-
-/* мягкая анимация "плавание" */
-@keyframes floaty{
-  0%,100%{ transform: translate3d(0,0,0) rotate(0deg); }
-  50%{ transform: translate3d(0,-10px,0) rotate(1deg); }
-}
-.float{ animation: floaty 7.5s ease-in-out infinite; }
-.float.slow{ animation-duration: 9.5s; }
-.float.fast{ animation-duration: 6.5s; }
-
-.d-left-top{ left:-64px; top:18px; width:min(220px,52vw); }
-.d-right-top{ right:-70px; top:40px; width:min(230px,54vw); }
-.d-left-mid{ left:-70px; top:30%; width:min(240px,58vw); opacity:.82; }
-.d-right-mid{ right:-78px; top:34%; width:min(240px,58vw); opacity:.82; }
-.d-left-bot{ left:-70px; bottom:-18px; width:min(240px,58vw); opacity:.88; }
-.d-right-bot{ right:-78px; bottom:10px; width:min(240px,58vw); opacity:.88; }
-
-/* ограничим декор на очень маленьких экранах */
-@media (max-width:360px){
-  .d-left-top,.d-right-top,.d-left-mid,.d-right-mid,.d-left-bot,.d-right-bot{ opacity:.7; }
-}
-
-/* ===== HERO butterfly ===== */
-.hero-butterfly{
-  width:96px;
-  margin:14px auto 0;
-  cursor:pointer;
-  animation:bob 2.6s ease-in-out infinite;
-}
-@keyframes bob{
-  0%,100%{ transform: translateY(0); }
-  50%{ transform: translateY(8px); }
-}
-
-/* ===== DATE ===== */
-.date-title{ font-size:clamp(44px,10vw,54px); }
+/* date */
+.date-title{font-size:48px}
 .date-main{
-  margin-top:12px;
   font-size:26px;
-  font-weight:650;
+  font-weight:600;
   letter-spacing:.12em;
   text-transform:uppercase;
-  line-height:1.55;
-  color:rgba(0,0,0,.80);
+  margin-top:12px;
 }
 .date-time{
   display:block;
   margin-top:6px;
   font-size:24px;
-  font-weight:650;
-  letter-spacing:.12em;
-  color:rgba(0,0,0,.76);
 }
 
-/* ===== CALENDAR (полный) ===== */
+/* calendar */
 .cal{
   margin-top:18px;
   border-radius:18px;
   overflow:hidden;
   background:rgba(255,255,255,.45);
-  border:1px solid rgba(0,0,0,.16);
 }
-.cal-head{
-  padding:12px 10px;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:20px;
-  color:rgba(0,0,0,.62);
-  background:rgba(255,255,255,.22);
-}
-.dow,.grid{ display:grid; grid-template-columns:repeat(7,1fr); }
-.dow div{
-  padding:10px 0;
-  font-size:14px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:rgba(0,0,0,.58);
-  background:rgba(255,255,255,.22);
-}
+.dow,.grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.dow div{padding:10px 0;font-size:14px}
 .grid div{
   padding:16px 0;
   font-size:22px;
-  color:rgba(0,0,0,.78);
-  border-top:1px solid rgba(0,0,0,.06);
   position:relative;
-  z-index:0;
-}
-.grid div.empty{ color:transparent; }
-.grid .sel{
-  font-weight:700;
-  color:rgba(0,0,0,.88);
 }
 .grid .sel::after{
   content:"";
   position:absolute;
-  left:50%; top:50%;
-  width:46px; height:46px;
-  transform:translate(-50%,-50%);
+  inset:0;
+  margin:auto;
+  width:46px;
+  height:46px;
   border-radius:50%;
-  background:rgba(180,122,134,.24);
-  border:1px solid rgba(180,122,134,.25);
+  background:rgba(180,122,134,.25);
   z-index:-1;
 }
-
-/* ✅ бабочка строго по центру ЗА "11" */
 .butterfly-behind{
   position:absolute;
-  left:50%;
-  top:50%;
+  left:50%;top:50%;
   width:58px;
   transform:translate(-50%,-78%);
   z-index:-2;
-  opacity:.98;
-  animation:flutter 3s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes flutter{
-  0%,100%{ transform:translate(-50%,-78%) rotate(-2deg); }
-  50%{ transform:translate(-50%,-88%) rotate(3deg); }
+  animation:float 3s ease-in-out infinite;
 }
 
-/* ===== FORM ===== */
+/* form */
 .form{
   display:grid;
   gap:14px;
   margin-top:14px;
-  text-align:left;
 }
 .input{
-  width:100%;
   padding:14px 16px;
   border-radius:999px;
-  border:1px solid rgba(0,0,0,.20);
+  border:1px solid rgba(0,0,0,.2);
   font-size:18px;
-  background:rgba(255,255,255,.52);
-  outline:none;
 }
-.input:focus{
-  border-color: rgba(180,122,134,.7);
-  box-shadow:0 0 0 3px rgba(180,122,134,.18);
-}
-.radios{ display:grid; gap:10px; margin-top:6px; }
-.radio{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:18px;
-  letter-spacing:.04em;
-}
-.radio input{ transform:scale(1.2); accent-color:var(--rose); }
 .btn{
-  padding:14px 18px;
+  padding:14px;
   border-radius:999px;
   border:none;
   background:rgba(180,122,134,.86);
   color:#fff;
   font-size:18px;
   letter-spacing:.12em;
-  text-transform:uppercase;
-  cursor:pointer;
-  box-shadow:0 12px 24px rgba(180,122,134,.22);
-}
-.status{
-  text-align:center;
-  font-size:14px;
-  color:rgba(0,0,0,.62);
-  min-height:18px;
 }
 
-/* ===== MAP ===== */
+/* map */
 .mapbtn{
   display:inline-block;
   margin-top:16px;
@@ -286,91 +206,12 @@ section{
   text-decoration:none;
   text-transform:uppercase;
   letter-spacing:.12em;
-  font-size:18px;
-  box-shadow:0 12px 24px rgba(180,122,134,.22);
 }
 
-/* ===== SIGNATURE ===== */
+/* signature */
 .sign{
   margin-top:26px;
-  font-size:clamp(38px,9vw,58px);
-}
-
-/* ===== MUSIC UI ===== */
-.music{
-  position:fixed;
-  bottom:16px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(255,255,255,.90);
-  border-radius:999px;
-  padding:10px 14px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  box-shadow:0 10px 24px rgba(0,0,0,.18);
-  z-index:50;
-}
-.mbtn{
-  width:44px;height:44px;
-  border-radius:50%;
-  border:none;
-  cursor:pointer;
-  display:grid;
-  place-items:center;
-  font-size:18px;
-}
-.mplay{ background:var(--rose); color:#fff; }
-.mstop{
-  background:transparent;
-  border:1px solid rgba(180,122,134,.35);
-  color:var(--rose2);
-}
-
-/* ✅ Оверлей-иконка если звук заблокирован */
-.audio-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(255,255,255,.55);
-  backdrop-filter: blur(2px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:60;
-}
-.audio-card{
-  width:min(420px,86vw);
-  background:rgba(255,255,255,.92);
-  border-radius:22px;
-  padding:18px 16px;
-  box-shadow:0 14px 34px rgba(0,0,0,.18);
-  text-align:center;
-}
-.audio-icon{
-  width:84px;
-  height:84px;
-  margin:6px auto 10px;
-  border-radius:50%;
-  background:rgba(180,122,134,.16);
-  display:grid;
-  place-items:center;
-  font-size:34px;
-  color:var(--rose);
-  animation:bob 2.6s ease-in-out infinite;
-}
-.audio-btn{
-  margin-top:10px;
-  width:100%;
-  padding:14px 16px;
-  border-radius:999px;
-  border:none;
-  background:rgba(180,122,134,.86);
-  color:#fff;
-  font-size:18px;
-  letter-spacing:.10em;
-  text-transform:uppercase;
-  cursor:pointer;
-  box-shadow:0 12px 24px rgba(180,122,134,.22);
+  font-size:56px;
 }
 </style>
 </head>
@@ -381,250 +222,95 @@ section{
 
 <main class="wrap">
 
-  <!-- HERO -->
-  <section>
-    <img src="./element_2.png" class="decor d-left-top float slow" alt="">
-    <img src="./element_3.png" class="decor d-right-top float" alt="">
-
-    <div class="card">
-      <div class="script title-name">Латифа</div>
-      <p class="caps"><span class="one-decor">1</span>годик</p>
-      <p class="caps">Тұсаукесер</p>
-
-      <div class="divider"></div>
-
-      <!-- бабочка - скролл к форме -->
-      <img src="./element_6.png" class="hero-butterfly" id="scrollToRsvp" alt="">
-      <p class="caps" style="margin-top:24px">Прокрутите вниз</p>
-    </div>
-  </section>
-
-  <!-- INVITE TEXT (восстановлен) -->
-  <section>
-    <img src="./element_1.png" class="decor d-left-mid float fast" alt="">
-    <img src="./element_4.png" class="decor d-right-mid float slow" alt="">
-
-    <div class="card">
-      <div class="script" style="font-size:48px">Дорогие гости!</div>
-      <div class="invite">
-        С радостью приглашаем Вас<br>
-        на первый годик нашей доченьки<br>
-        и обряд Тұсаукесер!
-      </div>
-      <div class="invite" style="margin-top:10px;">
-        Будем рады разделить с Вами этот день!
-      </div>
-    </div>
-  </section>
-
-  <!-- DATE + CALENDAR -->
-  <section>
-    <img src="./element_3.png" class="decor d-left-bot float slow" alt="">
-    <img src="./element_2.png" class="decor d-right-bot float" alt="">
-
-    <div class="card">
-      <div class="script date-title">Дата торжества:</div>
-      <div class="date-main">
-        11 апреля 2026 года
-        <span class="date-time">время 14:00</span>
-      </div>
-
-      <div class="cal">
-        <div class="cal-head">Апрель 2026</div>
-        <div class="dow">
-          <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
-        </div>
-
-        <!-- полный календарь строим скриптом -->
-        <div class="grid" id="calendarGrid"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORM (восстановлена) -->
-  <section id="rsvp">
-    <div class="card">
-      <p class="caps" style="font-size:18px;color:rgba(0,0,0,.74)">
-        Подтвердите, пожалуйста, своё присутствие:
-      </p>
-
-      <form class="form" id="rsvpForm">
-        <input class="input" id="name" name="name" placeholder="Ваше имя" required>
-
-        <div class="radios">
-          <label class="radio"><input type="radio" name="attendance" value="Обязательно приду" required> Обязательно приду</label>
-          <label class="radio"><input type="radio" name="attendance" value="Приду со второй половинкой"> Приду со второй половинкой</label>
-          <label class="radio"><input type="radio" name="attendance" value="Не смогу присутствовать"> Не смогу присутствовать</label>
-        </div>
-
-        <button class="btn" type="submit">Отправить</button>
-        <div class="status" id="status"></div>
-      </form>
-    </div>
-  </section>
-
-  <!-- LOCATION -->
-  <section>
-    <div class="card">
-      <div class="script date-title">Место проведения:</div>
-      <div class="invite" style="margin-top:12px">
-        Город Алматы<br>
-        улица Керей – Жанибек Хандар, 8<br>
-        ресторан «Sabroso»
-      </div>
-
-      <a class="mapbtn" target="_blank" rel="noopener"
-         href="https://2gis.kz/almaty/search/Sabroso%20%D0%9A%D0%B5%D1%80%D0%B5%D0%B9%20%D0%96%D0%B0%D0%BD%D0%B8%D0%B1%D0%B5%D0%BA%20%D1%85%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%208?m=76.962332%2C43.237115%2F19.87">
-        Открыть карту
-      </a>
-
-      <div class="script sign">С уважением,<br>Болат – Зара</div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ===== AUDIO ===== -->
-<audio id="music" muted autoplay loop playsinline>
-  <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3" type="audio/mpeg">
-</audio>
-
-<!-- мини-плеер -->
-<div class="music">
-  <button class="mbtn mplay" id="btnPlay" title="Пауза/Играть">❚❚</button>
-  <button class="mbtn mstop" id="btnStop" title="Отключить музыку">✕</button>
+<!-- HERO -->
+<section>
+<img src="./element_2.png" class="decor dl">
+<img src="./element_3.png" class="decor dr">
+<div class="card">
+  <div class="script title-name">Латифа</div>
+  <p class="caps"><span class="one-decor">1</span>годик</p>
+  <p class="caps">Тұсаукесер</p>
+  <div class="divider"></div>
+  <img src="./element_6.png" class="hero-butterfly" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
+  <p class="caps" style="margin-top:24px">Прокрутите вниз</p>
 </div>
+</section>
 
-<!-- оверлей если браузер блокирует звук -->
-<div class="audio-overlay" id="audioOverlay">
-  <div class="audio-card">
-    <div class="audio-icon">🔊</div>
-    <div class="caps" style="font-size:16px;color:rgba(0,0,0,.72)">
-      Нажмите, чтобы включить музыку
+<!-- INVITE TEXT -->
+<section>
+<img src="./element_1.png" class="decor dl">
+<img src="./element_4.png" class="decor dr">
+<div class="card">
+  <div class="script" style="font-size:48px">Дорогие гости!</div>
+  <div class="invite">
+    С радостью приглашаем Вас<br>
+    на первый годик нашей доченьки<br>
+    и обряд Тұсаукесер!
+  </div>
+  <div class="invite" style="margin-top:10px">
+    Будем рады разделить с Вами этот день!
+  </div>
+</div>
+</section>
+
+<!-- LOCATION -->
+<section>
+<div class="card">
+  <div class="script date-title">Место проведения:</div>
+  <div class="invite" style="margin-top:12px">
+    Город Алматы<br>
+    улица Керей – Жанибек Хандар, 8<br>
+    ресторан «Sabroso»
+  </div>
+  <a class="mapbtn" target="_blank"
+     href="https://2gis.kz/almaty/search/Sabroso%20%D0%9A%D0%B5%D1%80%D0%B5%D0%B9%20%D0%96%D0%B0%D0%BD%D0%B8%D0%B1%D0%B5%D0%BA%20%D1%85%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%208">
+    Открыть карту
+  </a>
+  <div class="script sign">Болат – Зара</div>
+</div>
+</section>
+
+<!-- DATE -->
+<section>
+<img src="./element_3.png" class="decor db">
+<div class="card">
+  <div class="script date-title">Дата торжества:</div>
+  <div class="date-main">
+    11 апреля 2026 года
+    <span class="date-time">время 14:00</span>
+  </div>
+
+  <div class="cal">
+    <div class="dow">
+      <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
     </div>
-    <button class="audio-btn" id="enableAudioBtn">Включить</button>
-    <div style="height:6px"></div>
-    <div class="caps" style="font-size:12px;color:rgba(0,0,0,.55)">
-      Браузер может блокировать автозапуск со звуком
+    <div class="grid">
+      <div></div><div></div>
+      <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+      <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+      <div class="sel"><img src="./element_6.png" class="butterfly-behind">11</div>
+      <div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
+      <div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+      <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
     </div>
   </div>
 </div>
+</section>
 
-<script>
-/* ===== 1) Scroll to form ===== */
-document.getElementById('scrollToRsvp').addEventListener('click', ()=>{
-  document.getElementById('rsvp').scrollIntoView({behavior:'smooth', block:'start'});
-});
+<!-- RSVP -->
+<section id="rsvp">
+<div class="card">
+  <p class="caps">Подтвердите присутствие</p>
+  <form class="form">
+    <input class="input" placeholder="Ваше имя" required>
+    <label><input type="radio" name="a"> Обязательно приду</label>
+    <label><input type="radio" name="a"> Приду со второй половинкой</label>
+    <label><input type="radio" name="a"> Не смогу присутствовать</label>
+    <button class="btn">Отправить</button>
+  </form>
+</div>
+</section>
 
-/* ===== 2) Calendar build (April 2026, monday-first, select 11 with centered butterfly) ===== */
-(function buildCalendar(){
-  const grid = document.getElementById('calendarGrid');
-  const year = 2026, monthIndex = 3; // April
-  const selectedDay = 11;
-
-  const first = new Date(year, monthIndex, 1);
-  const last = new Date(year, monthIndex + 1, 0);
-  const daysInMonth = last.getDate();
-
-  // Monday-first: JS day 0=Sun -> convert
-  const jsDay = first.getDay();
-  const mondayFirst = (jsDay + 6) % 7;
-
-  const totalCells = mondayFirst + daysInMonth;
-  const rows = Math.ceil(totalCells / 7);
-  const cells = rows * 7;
-
-  for(let i=0;i<cells;i++){
-    const cell = document.createElement('div');
-    const dayNum = i - mondayFirst + 1;
-
-    if(dayNum < 1 || dayNum > daysInMonth){
-      cell.className = 'empty';
-      cell.textContent = '·';
-    }else{
-      cell.textContent = String(dayNum);
-
-      if(dayNum === selectedDay){
-        cell.classList.add('sel');
-        const bf = document.createElement('img');
-        bf.src = './element_6.png';
-        bf.className = 'butterfly-behind';
-        bf.alt = '';
-        cell.prepend(bf); // ✅ за цифрой, но внутри ячейки
-      }
-    }
-    grid.appendChild(cell);
-  }
-})();
-
-/* ===== 3) Music logic (autoplay muted + overlay to enable sound) ===== */
-const music = document.getElementById('music');
-const btnPlay = document.getElementById('btnPlay');
-const btnStop = document.getElementById('btnStop');
-const overlay = document.getElementById('audioOverlay');
-const enableBtn = document.getElementById('enableAudioBtn');
-
-let hardStopped = false;
-
-/* пытаемся запустить (muted autoplay обычно проходит) */
-music.play().catch(()=>{});
-
-/* если пользователь впервые взаимодействует — включаем звук */
-function enableSound(){
-  if(hardStopped) return;
-  music.muted = false;
-  music.play().catch(()=>{});
-  overlay.style.display = 'none';
-}
-
-/* покажем оверлей если звук не включился (в большинстве браузеров нужно касание) */
-setTimeout(()=>{
-  // если всё ещё muted — предлагаем кнопку
-  if(music.muted && !hardStopped){
-    overlay.style.display = 'flex';
-  }
-}, 700);
-
-/* клик по кнопке включения */
-enableBtn.addEventListener('click', enableSound);
-
-/* любое первое касание страницы тоже включает звук */
-document.addEventListener('click', ()=>{
-  if(music.muted && !hardStopped) enableSound();
-}, {once:true});
-
-/* play/pause */
-btnPlay.addEventListener('click', ()=>{
-  if(hardStopped) return;
-
-  if(music.paused){
-    music.play().catch(()=>{ overlay.style.display = 'flex'; });
-    btnPlay.textContent = '❚❚';
-  }else{
-    music.pause();
-    btnPlay.textContent = '▶';
-  }
-});
-
-/* stop (полное отключение) */
-btnStop.addEventListener('click', ()=>{
-  hardStopped = true;
-  music.pause();
-  music.currentTime = 0;
-  overlay.style.display = 'none';
-  btnPlay.textContent = '▶';
-});
-
-/* ===== 4) RSVP submit (пока только статус, подключение к Google Sheets добавим следующим шагом) ===== */
-const form = document.getElementById('rsvpForm');
-const statusEl = document.getElementById('status');
-
-form.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  statusEl.textContent = "Спасибо! Ответ принят ✅";
-  form.reset();
-});
-</script>
-
+</main>
 </body>
 </html>
