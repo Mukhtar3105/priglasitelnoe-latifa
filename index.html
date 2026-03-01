@@ -1,747 +1,303 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Латифа — 1 годик — Тұсаукесер</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Латифа — 1 годик — Тұсаукесер</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display+SC:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display+SC&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --ink:#2b2b2b;
-      --muted:rgba(0,0,0,.70);
-      --rose:#b47a86;
-      --rose2:#a96f7a;
-      --card: rgba(255,255,255,.58);
-      --shadow: 0 10px 30px rgba(0,0,0,.10);
-      --maxw: 580px;
-      --radius: 999px;
-    }
+<style>
+:root{
+  --rose:#b47a86;
+  --rose2:#a96f7a;
+  --ink:#2b2b2b;
+  --card:rgba(255,255,255,.6);
+}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: "Cormorant Garamond", serif;
-      color:var(--ink);
-      background:#fff;
-      overflow-x:hidden;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  background:#fff;
+  color:var(--ink);
+  overflow-x:hidden;
+}
 
-    /* Background */
-    .bg{
-      position:fixed;
-      inset:0;
-      background: url("./Background.png") center/cover no-repeat fixed;
-      z-index:-3;
-    }
-    .veil{
-      position:fixed;
-      inset:0;
-      background: radial-gradient(1100px 760px at 50% 32%, rgba(255,255,255,.62), rgba(255,255,255,.16));
-      z-index:-2;
-      pointer-events:none;
-    }
+/* background */
+.bg{
+  position:fixed;
+  inset:0;
+  background:url("./Background.png") center/cover no-repeat fixed;
+  z-index:-3;
+}
+.veil{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(1000px 700px at 50% 30%, rgba(255,255,255,.6), rgba(255,255,255,.15));
+  z-index:-2;
+}
 
-    /* Layout */
-    .wrap{
-      width:min(var(--maxw), 92vw);
-      margin:0 auto;
-      padding: 18px 0 120px;
-    }
-    section{
-      position:relative;
-      padding: 24px 10px;
-      margin: 16px auto;
-      text-align:center;
-    }
-    .card{
-      position:relative;
-      background: var(--card);
-      border-radius: 22px;
-      padding: 24px 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(2px);
-      z-index:1;
-    }
+.wrap{
+  max-width:580px;
+  margin:auto;
+  padding-bottom:160px;
+}
 
-    /* Animations */
-    .fade{
-      opacity:0;
-      transform: translateY(14px);
-      animation: fadeUp .9s ease forwards;
-    }
-    .fade.d2{ animation-delay:.12s; }
-    .fade.d3{ animation-delay:.24s; }
-    @keyframes fadeUp{ to{ opacity:1; transform:translateY(0);} }
+section{
+  position:relative;
+  padding:28px 12px;
+  text-align:center;
+}
 
-    @keyframes floaty{
-      0%,100%{ transform: translate3d(0,0,0); }
-      50%{ transform: translate3d(0,-10px,0); }
-    }
+.card{
+  background:var(--card);
+  border-radius:22px;
+  padding:24px 18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
 
-    /* Decorations */
-    .decor{
-      position:absolute;
-      pointer-events:none;
-      user-select:none;
-      opacity:.92;
-      z-index:0;
-      animation: floaty 7.2s ease-in-out infinite;
-      will-change: transform;
-    }
-    .decor.slow{ animation-duration: 9s; }
-    .decor.fast{ animation-duration: 5.8s; }
+.decor{
+  position:absolute;
+  pointer-events:none;
+  opacity:.9;
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+.dl{left:-60px;top:20px;width:200px}
+.dr{right:-60px;top:40px;width:200px}
+.db{left:-60px;bottom:20px;width:200px}
 
-    /* Умные позиции, чтобы на телефонах НЕ съезжало */
-    .d-left-top{ left:-44px; top:14px; width:min(210px, 44vw); }
-    .d-right-top{ right:-46px; top:22px; width:min(220px, 46vw); }
-    .d-left-mid{ left:-52px; top:84px; width:min(200px, 42vw); opacity:.88; }
-    .d-right-mid{ right:-54px; top:110px; width:min(210px, 44vw); opacity:.88; }
-    .d-left-bot{ left:-54px; bottom:-8px; width:min(220px, 46vw); }
-    .d-right-bot{ right:-56px; bottom:-6px; width:min(220px, 46vw); }
+.script{
+  font-family:"Great Vibes",cursive;
+  color:var(--rose);
+}
 
-    /* Typography */
-    .script{
-      font-family: "Great Vibes", cursive;
-      color: var(--rose);
-      text-shadow: 0 10px 26px rgba(180,122,134,.10);
-    }
-    .title-name{
-      font-size: clamp(52px, 10.5vw, 76px);
-      line-height:1;
-      margin: 6px 0 8px;
-    }
-    .caps{
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color: var(--rose2);
-      font-size: 20px;
-      margin: 0;
-    }
-    .divider{
-      height:1px;
-      width:min(360px, 84%);
-      margin: 16px auto;
-      background: rgba(0,0,0,.20);
-    }
+.title-name{
+  font-size:76px;
+  line-height:1;
+}
 
-    /* Hero butterfly + scroll text lower */
-    .hero-butterfly{
-      width: 92px;
-      display:block;
-      margin: 10px auto 0;
-      cursor:pointer;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.08));
-      animation: bob 2.6s ease-in-out infinite;
-    }
-    @keyframes bob{
-      0%,100%{ transform: translateY(0); opacity:.96; }
-      50%{ transform: translateY(9px); opacity:1; }
-    }
-    .scroll-text{ margin-top: 26px; }
+.caps{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--rose2);
+  font-size:20px;
+}
 
-    /* Invitation text */
-    .invite-title{ font-size: 46px; margin-top: 2px; }
-    .invite-text{
-      margin-top: 14px;
-      font-size: 21px;
-      font-weight: 600;
-      letter-spacing:.10em;
-      text-transform: uppercase;
-      color: var(--muted);
-      line-height:1.55;
-    }
+/* ✅ КРАСИВАЯ ЦИФРА 1 В ТЕКСТЕ */
+.one-decor{
+  font-family:"Playfair Display SC",serif;
+  font-size:42px;
+  font-weight:400;
+  color:var(--rose);
+  margin-right:4px;
+  text-shadow:0 4px 14px rgba(180,122,134,.25);
+}
 
-    /* Date styles (bigger & bolder) */
-    .date-title{ font-size: 50px; }
-    .date-main{
-      margin-top: 14px;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.80);
-      line-height:1.45;
-    }
-    .date-time{
-      display:block;
-      margin-top: 6px;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      color: rgba(0,0,0,.76);
-    }
+.divider{
+  height:1px;
+  width:80%;
+  margin:18px auto;
+  background:rgba(0,0,0,.2);
+}
 
-    /* Calendar */
-    .cal{
-      width:100%;
-      margin-top: 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(0,0,0,.18);
-      overflow:hidden;
-      background: rgba(255,255,255,.45);
-    }
-    .cal-head{
-      padding: 12px 14px;
-      text-align:center;
-      font-size: 20px;
-      letter-spacing:.14em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.65);
-      background: rgba(255,255,255,.25);
-    }
-    .dow, .grid{
-      display:grid;
-      grid-template-columns: repeat(7, 1fr);
-    }
-    .dow div{
-      padding: 10px 0;
-      text-align:center;
-      font-size: 14px;
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.55);
-      background: rgba(255,255,255,.25);
-    }
-    .grid div{
-      padding: 14px 0;
-      text-align:center;
-      font-size: 22px; /* базово крупнее */
-      color: rgba(0,0,0,.78);
-      border-top: 1px solid rgba(0,0,0,.08);
-      position:relative;
-      z-index:0;
-      font-variant-numeric: tabular-nums;
-    }
-    .grid div.empty{
-      color: transparent;
-    }
+/* butterfly */
+.hero-butterfly{
+  width:92px;
+  margin:12px auto 0;
+  cursor:pointer;
+  animation:bob 2.6s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(8px)}
+}
 
-    /* Day 1 special: MUCH bigger + contrast */
-    .grid div.firstDay{
-      font-family: "Playfair Display SC", serif;
-      font-size: 44px;
-      font-weight: 700;
-      color: var(--rose);
-      text-shadow:
-        0 10px 22px rgba(180,122,134,.28),
-        0 0 2px rgba(180,122,134,.55);
-      line-height:1;
-    }
+.invite{
+  font-size:21px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-top:14px;
+}
 
-    /* Selected day */
-    .grid div.sel{
-      font-weight: 800;
-      color: rgba(0,0,0,.88);
-      z-index:1;
-    }
-    .grid div.sel::after{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:50%;
-      width: 44px;
-      height: 44px;
-      transform: translate(-50%,-50%);
-      border-radius: 999px;
-      background: rgba(180,122,134,.22);
-      border: 1px solid rgba(180,122,134,.35);
-      z-index:-1;
-    }
+/* calendar */
+.cal{
+  margin-top:18px;
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.45);
+}
+.dow,.grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+}
+.dow div{padding:10px 0;font-size:14px}
+.grid div{
+  padding:16px 0;
+  font-size:22px;
+  position:relative;
+}
+.grid .sel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(180,122,134,.25);
+  z-index:-1;
+}
+.butterfly-behind{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:56px;
+  transform:translate(-50%,-75%);
+  z-index:-2;
+  animation:float 3s ease-in-out infinite;
+}
 
-    /* Butterfly behind 11 */
-    .butterfly-behind{
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:58px;
-      transform: translate(-50%,-72%);
-      z-index:-2;
-      opacity:.96;
-      animation: flutter 3s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes flutter{
-      0%,100%{ transform:translate(-50%,-72%) rotate(-2deg); }
-      50%{ transform:translate(-50%,-84%) rotate(3deg); }
-    }
+/* form */
+form{display:grid;gap:14px;margin-top:14px}
+input,button{
+  padding:14px;
+  border-radius:999px;
+  font-size:18px;
+  border:1px solid rgba(0,0,0,.2);
+}
+button{
+  background:var(--rose);
+  color:#fff;
+  border:none;
+}
 
-    /* RSVP */
-    .form{
-      display:grid;
-      gap: 12px;
-      margin-top: 12px;
-      text-align:left;
-    }
-    .input{
-      width:100%;
-      border: 1px solid rgba(0,0,0,.22);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      font-size: 17px;
-      background: rgba(255,255,255,.48);
-      outline:none;
-    }
-    .input:focus{
-      border-color: rgba(180,122,134,.75);
-      box-shadow: 0 0 0 3px rgba(180,122,134,.18);
-    }
-    .radios{
-      display:grid;
-      gap: 10px;
-      margin-top: 2px;
-    }
-    .radio{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      font-size: 18px;
-      letter-spacing:.03em;
-      color: rgba(0,0,0,.78);
-    }
-    .radio input{
-      transform: scale(1.15);
-      accent-color: var(--rose);
-    }
-    .btn{
-      border:none;
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      font-size: 18px;
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      background: rgba(180,122,134,.80);
-      color:#fff;
-      cursor:pointer;
-      box-shadow: 0 12px 24px rgba(180,122,134,.22);
-      transition: transform .15s ease, filter .15s ease;
-      text-align:center;
-    }
-    .btn:hover{ filter: brightness(1.03); }
-    .btn:active{ transform: scale(.99); }
-    .status{
-      text-align:center;
-      min-height: 18px;
-      font-size: 14px;
-      color: rgba(0,0,0,.60);
-      margin-top: 4px;
-    }
-
-    /* Location */
-    .mapbtn{
-      display:inline-block;
-      margin-top:16px;
-      padding: 14px 22px;
-      border-radius: var(--radius);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      background: rgba(180,122,134,.80);
-      color:#fff;
-      text-decoration:none;
-      box-shadow: 0 12px 24px rgba(180,122,134,.22);
-      font-size:18px;
-    }
-    .sign{
-      margin-top: 26px;
-      font-size: clamp(38px, 9vw, 58px);
-    }
-
-    /* Music UI */
-    .music{
-      position:fixed;
-      left:50%;
-      bottom: 14px;
-      transform: translateX(-50%);
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(7px);
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 10px 26px rgba(0,0,0,.14);
-      z-index: 50;
-      max-width: min(520px, 92vw);
-    }
-    .musicBtn{
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border:none;
-      background: rgba(180,122,134,.84);
-      color:#fff;
-      font-size: 18px;
-      cursor:pointer;
-      box-shadow: 0 10px 18px rgba(180,122,134,.22);
-    }
-    .musicMeta{
-      text-align:left;
-      line-height:1.2;
-      min-width: 0;
-    }
-    .musicMeta .t{
-      font-size: 13px;
-      letter-spacing:.10em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.72);
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-      max-width: 300px;
-    }
-    .musicMeta .s{
-      font-size: 12px;
-      letter-spacing:.08em;
-      color: rgba(0,0,0,.55);
-      text-transform: uppercase;
-    }
-
-    /* Autoplay overlay (красивый) — появится ТОЛЬКО если браузер запретил автозвук */
-    .autoplayGate{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      z-index: 80;
-      background: rgba(255,255,255,.35);
-      backdrop-filter: blur(8px);
-    }
-    .gateCard{
-      width:min(520px, 92vw);
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(0,0,0,.10);
-      border-radius: 22px;
-      box-shadow: 0 16px 44px rgba(0,0,0,.18);
-      padding: 18px 18px 16px;
-      text-align:center;
-    }
-    .gateTitle{
-      font-size: 40px;
-      margin: 0 0 8px;
-    }
-    .gateText{
-      margin: 0 0 14px;
-      font-size: 15px;
-      letter-spacing:.10em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.62);
-      line-height:1.5;
-    }
-
-    @media (max-width:420px){
-      .title-name{ font-size: clamp(48px, 11vw, 68px); }
-      .invite-text{ font-size: 19px; }
-      .date-main{ font-size: 25px; }
-      .date-time{ font-size: 22px; }
-      .grid div{ font-size: 21px; }
-      .grid div.firstDay{ font-size: 42px; }
-    }
-  </style>
+/* 🎵 music */
+.music{
+  position:fixed;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,.85);
+  border-radius:999px;
+  padding:10px 16px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+.music button{
+  width:40px;height:40px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+}
+.play{background:var(--rose);color:#fff}
+.stop{
+  background:transparent;
+  border:1px solid rgba(180,122,134,.35);
+  color:var(--rose2);
+}
+</style>
 </head>
 
 <body>
-  <div class="bg"></div>
-  <div class="veil"></div>
+<div class="bg"></div>
+<div class="veil"></div>
 
-  <main class="wrap">
+<main class="wrap">
 
-    <!-- HERO -->
-    <section class="fade">
-      <img class="decor d-left-top slow" src="./element_2.png" alt="">
-      <img class="decor d-right-top" src="./element_3.png" alt="">
-      <div class="card">
-        <div class="script title-name">Латифа</div>
-        <p class="caps">1 годик</p>
-        <p class="caps">Тұсаукесер</p>
-        <div class="divider"></div>
+<section>
+<img src="./element_2.png" class="decor dl">
+<img src="./element_3.png" class="decor dr">
+<div class="card">
+  <div class="script title-name">Латифа</div>
+  <p class="caps"><span class="one-decor">1</span>годик</p>
+  <p class="caps">Тұсаукесер</p>
+  <div class="divider"></div>
+  <img src="./element_6.png" class="hero-butterfly" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
+  <p class="caps" style="margin-top:22px">Прокрутите вниз</p>
+</div>
+</section>
 
-        <!-- Клик по бабочке -> к форме -->
-        <img src="./element_6.png" class="hero-butterfly" id="scrollToForm" alt="">
+<section>
+<div class="card">
+  <div class="script" style="font-size:46px">Дорогие гости!</div>
+  <div class="invite">
+    С радостью приглашаем Вас<br>
+    на первый годик нашей доченьки<br>
+    и обряд Тұсаукесер!
+  </div>
+</div>
+</section>
 
-        <p class="caps scroll-text">Прокрутите вниз</p>
-      </div>
-    </section>
+<section>
+<div class="card">
+  <div class="script" style="font-size:46px">Дата торжества</div>
+  <div class="invite">11 апреля 2026 года<br>время 14:00</div>
 
-    <!-- INVITATION (Восстановлено) -->
-    <section class="fade d2">
-      <img class="decor d-left-mid fast" src="./element_1.png" alt="">
-      <img class="decor d-right-mid slow" src="./element_4.png" alt="">
-      <div class="card">
-        <div class="script invite-title">Дорогие гости!</div>
-        <div class="invite-text">
-          С радостью приглашаем Вас<br>
-          на первый годик нашей доченьки<br>
-          и обряд Тұсаукесер!<br><br>
-          Будем рады разделить<br>
-          с Вами этот день!
-        </div>
-      </div>
-    </section>
-
-    <!-- DATE + CALENDAR -->
-    <section class="fade d3">
-      <img class="decor d-left-bot slow" src="./element_2.png" alt="">
-      <img class="decor d-right-bot" src="./element_3.png" alt="">
-      <div class="card">
-        <div class="script date-title">Дата торжества:</div>
-        <div class="date-main">
-          11 апреля 2026 года
-          <span class="date-time">время 14:00</span>
-        </div>
-
-        <div class="cal" aria-label="Календарь">
-          <div class="cal-head">Апрель 2026</div>
-          <div class="dow">
-            <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
-          </div>
-          <div class="grid" id="calendarGrid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LOCATION (после даты, как Вы просили) -->
-    <section class="fade">
-      <div class="card">
-        <div class="script date-title">Место проведения:</div>
-        <div class="date-main" style="font-size:24px; letter-spacing:.10em;">
-          Город Алматы<br>
-          улица Керей – Жанибек Хандар, 8<br>
-          ресторан «Sabroso»
-        </div>
-
-        <a class="mapbtn" target="_blank" rel="noopener"
-           href="https://2gis.kz/almaty/search/Sabroso%20%D0%9A%D0%B5%D1%80%D0%B5%D0%B9%20%D0%96%D0%B0%D0%BD%D0%B8%D0%B1%D0%B5%D0%BA%20%D1%85%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%208?m=76.962332%2C43.237115%2F19.87">
-          Открыть карту
-        </a>
-
-        <div class="script sign">С уважением,<br>Болат – Зара</div>
-      </div>
-    </section>
-
-    <!-- RSVP FORM -->
-    <section class="fade" id="rsvp">
-      <div class="card">
-        <p class="caps" style="color:rgba(0,0,0,.72); font-size:18px;">
-          Подтвердите, пожалуйста, своё<br>присутствие:
-        </p>
-
-        <form class="form" id="rsvpForm">
-          <input class="input" name="name" id="name" type="text" placeholder="ВАШЕ ИМЯ" required>
-
-          <div class="radios">
-            <label class="radio">
-              <input type="radio" name="attendance" value="Обязательно приду" required>
-              Обязательно приду
-            </label>
-            <label class="radio">
-              <input type="radio" name="attendance" value="Приду со второй половинкой">
-              Приду со второй половинкой
-            </label>
-            <label class="radio">
-              <input type="radio" name="attendance" value="Не смогу присутствовать">
-              Не смогу присутствовать
-            </label>
-          </div>
-
-          <button class="btn" type="submit">Отправить</button>
-          <div class="status" id="status"></div>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- 🎵 AUDIO (файл рядом с index.html) -->
-  <audio id="bgMusic" preload="auto" loop playsinline>
-    <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- Красивый плеер -->
-  <div class="music" id="musicBar" aria-label="Музыка">
-    <button class="musicBtn" id="musicBtn">❚❚</button>
-    <div class="musicMeta">
-      <div class="t">Серік Ибрагимов feat. Еркеш Хасен — Қызым (Live)</div>
-      <div class="s" id="musicState">ИГРАЕТ</div>
+  <div class="cal">
+    <div class="dow">
+      <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
+    </div>
+    <div class="grid">
+      <div></div><div></div>
+      <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+      <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+      <div class="sel"><img src="./element_6.png" class="butterfly-behind">11</div>
+      <div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
+      <div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+      <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
     </div>
   </div>
+</div>
+</section>
 
-  <!-- Если автозапуск заблокирован — появится красивое окно -->
-  <div class="autoplayGate" id="autoplayGate">
-    <div class="gateCard">
-      <div class="script gateTitle">Музыка</div>
-      <p class="gateText">
-        Ваш браузер блокирует автозапуск со звуком.<br>
-        Нажмите кнопку ниже — и музыка начнёт играть.
-      </p>
-      <button class="btn" id="gatePlay">Включить музыку</button>
-    </div>
-  </div>
+<section id="rsvp">
+<div class="card">
+  <p class="caps">Подтвердите присутствие</p>
+  <form>
+    <input placeholder="Ваше имя" required>
+    <label><input type="radio" name="a"> Обязательно приду</label>
+    <label><input type="radio" name="a"> Приду со второй половинкой</label>
+    <label><input type="radio" name="a"> Не смогу присутствовать</label>
+    <button>Отправить</button>
+  </form>
+</div>
+</section>
 
-  <script>
-    /* =========================
-       1) КАЛЕНДАРЬ (Апрель 2026) — ПОЛНЫЙ
-       1 — большой и красивый
-       11 — выделен + бабочка ЗА цифрой
-       ========================= */
-    (function buildCalendar(){
-      const grid = document.getElementById('calendarGrid');
-      const year = 2026, monthIndex = 3; // April
-      const selectedDay = 11;
+</main>
 
-      const first = new Date(year, monthIndex, 1);
-      const last  = new Date(year, monthIndex + 1, 0);
-      const daysInMonth = last.getDate();
+<audio id="music" loop>
+  <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3">
+</audio>
 
-      // Monday-first
-      const jsDay = first.getDay(); // 0=Sun..6=Sat
-      const mondayFirst = (jsDay + 6) % 7; // 0=Mon..6=Sun
+<div class="music">
+  <button class="play" onclick="toggle()">❚❚</button>
+  <button class="stop" onclick="stopMusic()">✕</button>
+</div>
 
-      const totalCells = mondayFirst + daysInMonth;
-      const rows = Math.ceil(totalCells / 7);
-      const cells = rows * 7;
+<script>
+const music=document.getElementById("music");
+let playing=true;
 
-      for(let i=0;i<cells;i++){
-        const cell = document.createElement('div');
-        const dayNum = i - mondayFirst + 1;
+music.play().catch(()=>{});
 
-        if(dayNum < 1 || dayNum > daysInMonth){
-          cell.className = 'empty';
-          cell.textContent = '·';
-        } else {
-          cell.textContent = String(dayNum);
+function toggle(){
+  if(music.paused){music.play();playing=true}
+  else{music.pause();playing=false}
+}
+function stopMusic(){
+  music.pause();
+  music.currentTime=0;
+}
+</script>
 
-          if(dayNum === 1){
-            cell.classList.add('firstDay'); // ✅ вот почему раньше не менялось
-          }
-          if(dayNum === selectedDay){
-            cell.classList.add('sel');
-            const img = document.createElement('img');
-            img.src = './element_6.png';
-            img.className = 'butterfly-behind';
-            img.alt = '';
-            cell.prepend(img);
-          }
-        }
-        grid.appendChild(cell);
-      }
-    })();
-
-    /* =========================
-       2) Скролл по бабочке -> к форме
-       ========================= */
-    document.getElementById('scrollToForm').addEventListener('click', () => {
-      document.getElementById('rsvp').scrollIntoView({behavior:'smooth'});
-    });
-
-    /* =========================
-       3) Музыка: пытаемся autoplay
-       - Если блок — показываем красивую кнопку
-       ========================= */
-    const music = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const musicState = document.getElementById('musicState');
-    const gate = document.getElementById('autoplayGate');
-    const gatePlay = document.getElementById('gatePlay');
-
-    function setUI(playing){
-      musicBtn.textContent = playing ? '❚❚' : '▶';
-      musicState.textContent = playing ? 'ИГРАЕТ' : 'ПАУЗА';
-    }
-
-    async function tryAutoplay(){
-      try{
-        // максимум возможного: пробуем старт
-        await music.play();
-        setUI(true);
-        gate.style.display = 'none';
-      }catch(e){
-        // браузер запретил — показываем красивое окно
-        gate.style.display = 'flex';
-        setUI(false);
-      }
-    }
-
-    tryAutoplay();
-
-    gatePlay.addEventListener('click', async () => {
-      try{
-        await music.play();
-        gate.style.display = 'none';
-        setUI(true);
-      }catch(e){
-        // если прям совсем нельзя — оставляем окно
-        setUI(false);
-      }
-    });
-
-    // Переключение play/pause
-    musicBtn.addEventListener('click', async () => {
-      if(music.paused){
-        try{ await music.play(); setUI(true); }
-        catch(e){ gate.style.display='flex'; setUI(false); }
-      }else{
-        music.pause();
-        setUI(false);
-      }
-    });
-
-    // Доп. помощь: любой первый клик по странице пробует запустить (iOS/Chrome политика)
-    document.addEventListener('click', async () => {
-      if(music.paused){
-        try{ await music.play(); gate.style.display='none'; setUI(true); }
-        catch(e){}
-      }
-    }, { once:true });
-
-    /* =========================
-       4) Отправка формы в Google Sheets
-       (оставил как было: нужно вставить URL Web App)
-       ========================= */
-    const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
-
-    const form = document.getElementById('rsvpForm');
-    const statusEl = document.getElementById('status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = "Отправляем…";
-
-      const name = document.getElementById('name').value.trim();
-      const attendance = (new FormData(form)).get('attendance');
-
-      const payload = {
-        name,
-        attendance,
-        page: location.href,
-        userAgent: navigator.userAgent,
-        timestamp: new Date().toISOString()
-      };
-
-      try{
-        if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("PASTE_")){
-          throw new Error("Не указан APPS_SCRIPT_URL (URL Web App из Apps Script).");
-        }
-
-        await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        statusEl.textContent = "Спасибо! Ответ отправлен ✅";
-        form.reset();
-      }catch(err){
-        statusEl.textContent = "Ошибка: " + err.message;
-      }
-    });
-  </script>
 </body>
 </html>
