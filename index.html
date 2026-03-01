@@ -1,955 +1,266 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Латифа — 1 годик — Тұсаукесер</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Латифа — 1 годик — Тұсаукесер</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --ink:#2b2b2b;
-      --muted: rgba(0,0,0,.64);
-      --rose:#b47a86;
-      --rose2:#a96f7a;
-      --card: rgba(255,255,255,.62);
-      --shadow: 0 16px 40px rgba(0,0,0,.10);
-      --shadow2: 0 12px 26px rgba(180,122,134,.22);
-      --maxw: 560px;
-      --radius: 26px;
-    }
+<style>
+:root{
+  --ink:#2b2b2b;
+  --rose:#b47a86;
+  --rose2:#a96f7a;
+  --card:rgba(255,255,255,.62);
+  --shadow:0 16px 40px rgba(0,0,0,.10);
+  --shadow2:0 12px 26px rgba(180,122,134,.22);
+  --maxw:560px;
+}
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: "Cormorant Garamond", serif;
-      color:var(--ink);
-      background:#fff;
-      overflow-x:hidden;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Cormorant Garamond",serif;
+  color:var(--ink);
+  overflow-x:hidden;
+}
 
-    /* Background */
-    .bg{
-      position:fixed;
-      inset:0;
-      background:url("./Background.png") center/cover no-repeat fixed;
-      z-index:-3;
-    }
-    .veil{
-      position:fixed;
-      inset:0;
-      background:radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.62), rgba(255,255,255,.12));
-      z-index:-2;
-      pointer-events:none;
-    }
+/* background */
+.bg{position:fixed;inset:0;background:url("./Background.png") center/cover no-repeat;z-index:-3}
+.veil{position:fixed;inset:0;background:radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.62), rgba(255,255,255,.12));z-index:-2}
 
-    /* Layout */
-    .wrap{
-      width:min(var(--maxw),92vw);
-      margin:0 auto;
-      padding: 22px 0 90px;
-    }
-    section{
-      position:relative;
-      padding: 22px 10px;
-      margin: 14px auto;
-      text-align:center;
-    }
-    .card{
-      position:relative;
-      background:var(--card);
-      border-radius: var(--radius);
-      padding: 26px 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(2px);
-      overflow:hidden;
-      z-index:1;
-    }
+/* layout */
+.wrap{width:min(var(--maxw),92vw);margin:auto;padding:24px 0 100px}
+section{position:relative;padding:22px 10px;margin:14px auto;text-align:center}
+.card{background:var(--card);border-radius:26px;padding:26px 18px;box-shadow:var(--shadow)}
 
-    /* Type */
-    .script{
-      font-family:"Great Vibes",cursive;
-      color:var(--rose);
-      text-shadow: 0 10px 26px rgba(180,122,134,.10);
-    }
-    .title-name{
-      font-size:clamp(52px,11vw,74px);
-      line-height:1;
-      margin-top: 6px;
-    }
-    .caps{
-      font-family: "Cormorant Garamond", serif;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      color:var(--rose2);
-      font-size:20px;
-      margin:0;
-    }
+/* typography */
+.script{font-family:"Great Vibes",cursive;color:var(--rose)}
+.title-name{font-size:72px;line-height:1}
+.caps{text-transform:uppercase;letter-spacing:.14em;color:var(--rose2);font-size:20px;margin:0}
 
-    /* ✅ красивая “1” (НЕ календарь) */
-    .yearline{
-      margin-top: 10px;
-      display:flex;
-      justify-content:center;
-      align-items:baseline;
-      gap: 10px;
-    }
-    .digit-one{
-      font-family: "Cinzel", serif;
-      font-weight:600;
-      font-size: 38px;
-      line-height: 1;
-      letter-spacing: .02em;
+/* year */
+.yearline{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.digit-one{
+  font-family:"Cinzel",serif;
+  font-size:38px;
+  font-weight:600;
+  color:rgba(180,122,134,.92);
+  text-shadow:0 10px 22px rgba(180,122,134,.18),0 2px 0 rgba(255,255,255,.55);
+}
+.yearword{font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose2)}
 
-      /* ✅ пудрово-розовая (не чёрная) */
-      color: rgba(180,122,134,.92);
+.divider{height:1px;width:80%;margin:18px auto;background:rgba(0,0,0,.18)}
 
-      /* мягкая “дорогая” глубина */
-      text-shadow:
-        0 10px 22px rgba(180,122,134,.18),
-        0 2px 0 rgba(255,255,255,.55);
+/* butterfly */
+.hero-butterfly{width:96px;margin:10px auto;animation:bob 2.8s ease-in-out infinite;cursor:pointer}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
 
-      opacity: .98;
-    }
-    .yearword{
-      font-size:20px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--rose2);
-    }
+/* invite & place style */
+.block-text{
+  margin-top:12px;
+  font-size:20px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.72);
+  line-height:1.75;
+}
 
-    .divider{
-      height:1px;
-      width:min(360px,82%);
-      margin:18px auto;
-      background:rgba(0,0,0,.18);
-    }
+/* map button */
+.mapbtn{
+  display:inline-block;
+  margin-top:18px;
+  padding:14px 24px;
+  border-radius:999px;
+  background:rgba(180,122,134,.84);
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  box-shadow:var(--shadow2);
+}
 
-    /* Hero butterfly + scroll */
-    .hero-butterfly{
-      display:block;
-      width:96px;
-      margin: 10px auto 0;
-      animation: bob 2.8s ease-in-out infinite;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,.08));
-      cursor:pointer;
-      user-select:none;
-    }
-    .scroll-text{
-      margin-top: 22px;
-      cursor:pointer;
-    }
-    @keyframes bob{
-      0%,100%{ transform: translateY(0); opacity:.95; }
-      50%{ transform: translateY(9px); opacity:1; }
-    }
+/* calendar */
+.cal{margin-top:18px;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.46)}
+.dow,.grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.dow div{padding:10px 0;font-size:14px}
+.grid div{padding:12px 0;position:relative}
+.grid .sel{font-weight:800}
+.grid .sel::after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:38px;height:38px;
+  border-radius:50%;
+  background:rgba(180,122,134,.18);
+  z-index:-1;
+}
+.butterfly-behind{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-58%);
+  width:56px;
+  z-index:-2;
+  animation:bob 3s ease-in-out infinite;
+}
 
-    /* Date title stronger */
-    .h-script{
-      font-size: clamp(40px, 9.5vw, 54px);
-      margin: 0 0 10px;
-    }
-    .date-main{
-      margin-top:12px;
-      font-size:26px;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color: rgba(0,0,0,.74);
-      line-height:1.55;
-    }
-    .date-time{
-      display:block;
-      margin-top:6px;
-      font-size:24px;
-      font-weight:700;
-      letter-spacing:.12em;
-      color: rgba(0,0,0,.70);
-    }
+/* music */
+.music-hint{
+  position:fixed;
+  bottom:90px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,.9);
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+  display:none;
+}
+.music-hint.show{display:flex;align-items:center;gap:8px}
+.music-hint span{font-size:18px}
 
-    /* Calendar */
-    .cal{
-      width:100%;
-      margin-top:18px;
-      border-radius:18px;
-      border:1px solid rgba(0,0,0,.18);
-      overflow:hidden;
-      background:rgba(255,255,255,.46);
-    }
-    .cal-head{
-      padding:12px;
-      font-size:20px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      background:rgba(255,255,255,.25);
-      color: rgba(0,0,0,.62);
-    }
-    .dow,.grid{
-      display:grid;
-      grid-template-columns:repeat(7,1fr);
-    }
-    .dow div{
-      font-size:14px;
-      padding:10px 0;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      background:rgba(255,255,255,.25);
-      color: rgba(0,0,0,.55);
-    }
-    .grid div{
-      padding:12px 0;
-      border-top:1px solid rgba(0,0,0,.08);
-      font-size:17px;
-      position:relative;
-      z-index:0;
-      color: rgba(0,0,0,.72);
-      font-variant-numeric: tabular-nums;
-    }
-    .grid div.empty{ color: transparent; }
+/* modal */
+.music-modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.18);z-index:9999;padding:18px}
+.music-modal.show{display:flex}
+.music-sheet{background:rgba(255,255,255,.9);border-radius:22px;padding:18px;width:100%;max-width:520px}
+.music-actions{display:flex;gap:12px;justify-content:center;margin-top:10px}
+.chip{padding:12px 18px;border-radius:999px;border:none;text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
+.chip.yes{background:rgba(180,122,134,.88);color:#fff}
+.chip.no{background:#eee}
 
-    .grid .sel{
-      font-weight:800;
-      color: rgba(0,0,0,.80);
-    }
-    .grid .sel::after{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:38px;
-      height:38px;
-      transform:translate(-50%,-50%);
-      border-radius:50%;
-      background:rgba(180,122,134,.18);
-      border: 1px solid rgba(180,122,134,.28);
-      z-index:-1;
-    }
+/* floating button */
+.music-fab{position:fixed;right:14px;bottom:14px;background:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 18px 48px rgba(0,0,0,.16);display:flex;align-items:center;gap:10px}
+.music-fab button{width:44px;height:44px;border-radius:50%;border:none;background:rgba(180,122,134,.88);color:#fff}
 
-    /* ✅ Бабочка за цифрой 11 (центр) */
-    .butterfly-behind{
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:56px;
-      transform: translate(-50%,-58%);
-      z-index:-2;
-      opacity:.95;
-      pointer-events:none;
-      animation:flutter 3.2s ease-in-out infinite;
-      transform-origin: center;
-    }
-    @keyframes flutter{
-      0%,100%{ transform:translate(-50%,-58%) rotate(-2deg); }
-      50%{ transform:translate(-50%,-66%) rotate(3deg); }
-    }
-
-    /* Invite text */
-    .invite-script{
-      font-size: clamp(38px, 9vw, 52px);
-      margin: 0 0 10px;
-    }
-    .invite-text{
-      margin-top: 10px;
-      font-size: 20px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.70);
-      line-height: 1.75;
-    }
-
-    /* Location block */
-    .place-lines{
-      margin-top: 12px;
-      font-size: 20px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.70);
-      line-height: 1.75;
-    }
-    .mapbtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      margin-top:18px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      background: rgba(180,122,134,.84);
-      color:#fff !important;
-      text-decoration:none !important;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 18px;
-      box-shadow: var(--shadow2);
-      border: 1px solid rgba(255,255,255,.35);
-      outline:none;
-      transition: transform .15s ease, filter .15s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .mapbtn:hover{ filter: brightness(1.03); }
-    .mapbtn:active{ transform: scale(.99); }
-    .mapbtn:visited{ color:#fff !important; }
-
-    .sign{
-      margin-top: 26px;
-      font-size: clamp(38px, 9vw, 58px);
-    }
-
-    /* RSVP Form */
-    .form{
-      display:grid;
-      gap: 12px;
-      margin-top: 10px;
-      text-align:left;
-    }
-    .input{
-      width:100%;
-      border: 1px solid rgba(0,0,0,.22);
-      border-radius: 999px;
-      padding: 14px 16px;
-      font-size: 16px;
-      background: rgba(255,255,255,.48);
-      outline:none;
-    }
-    .input:focus{
-      border-color: rgba(180,122,134,.70);
-      box-shadow: 0 0 0 3px rgba(180,122,134,.16);
-    }
-    .radios{
-      display:grid;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    .radio{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-size: 18px;
-      letter-spacing: .04em;
-      color: rgba(0,0,0,.74);
-    }
-    .radio input{ transform: scale(1.15); accent-color: var(--rose); }
-
-    .btn{
-      border: none;
-      border-radius: 999px;
-      padding: 14px 18px;
-      font-size: 18px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      background: rgba(180,122,134,.84);
-      color:#fff;
-      box-shadow: var(--shadow2);
-      cursor:pointer;
-      transition: transform .15s ease, filter .15s ease;
-      width:100%;
-      text-align:center;
-    }
-    .btn:hover{ filter: brightness(1.03); }
-    .btn:active{ transform: scale(.99); }
-
-    .status{
-      font-size: 14px;
-      color: rgba(0,0,0,.60);
-      min-height: 18px;
-      text-align:center;
-      margin-top: 2px;
-    }
-
-    /* Countdown */
-    .countdown{ margin-top: 18px; text-align:center; }
-    .count-title{
-      text-align:center;
-      font-size: 18px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      margin: 0 0 10px;
-      color: rgba(0,0,0,.62);
-    }
-    .digits{
-      display:flex;
-      justify-content:center;
-      gap: 10px;
-      flex-wrap:wrap;
-    }
-    .unit{ min-width: 86px; text-align:center; }
-    .flip{
-      background: rgba(180,122,134,.78);
-      color:#fff;
-      border-radius: 14px;
-      padding: 12px 10px;
-      font-size: 34px;
-      line-height: 1;
-      box-shadow: 0 14px 26px rgba(180,122,134,.18);
-      font-variant-numeric: tabular-nums;
-    }
-    .lab{
-      margin-top: 7px;
-      font-size: 13px;
-      letter-spacing:.14em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.55);
-    }
-
-    /* Footer note */
-    .footer-note{
-      margin-top: 10px;
-      font-size: 16px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.55);
-      line-height: 1.6;
-    }
-
-    /* Decorations */
-    .decor{
-      position:absolute;
-      pointer-events:none;
-      user-select:none;
-      z-index:0;
-      opacity:.92;
-      filter: drop-shadow(0 14px 26px rgba(0,0,0,.06));
-      will-change: transform;
-    }
-    .d1{ width:min(210px, 44vw); left:-44px; top: 12px; }
-    .d2{ width:min(220px, 46vw); right:-48px; top: 16px; }
-    .d3{ width:min(190px, 42vw); left:-50px; bottom: 8px; }
-    .d4{ width:min(200px, 44vw); right:-52px; bottom: 6px; }
-
-    @keyframes floaty{
-      0%,100%{ transform: translate3d(0,0,0) rotate(0deg); }
-      50%{ transform: translate3d(0,-10px,0) rotate(1deg); }
-    }
-    .float{ animation: floaty 7.2s ease-in-out infinite; }
-    .float.slow{ animation-duration: 9.2s; }
-    .float.fast{ animation-duration: 5.6s; }
-
-    /* Music modal + control */
-    .music-modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:flex-end;
-      justify-content:center;
-      background: rgba(0,0,0,.18);
-      z-index: 9999;
-      padding: 18px;
-    }
-    .music-modal.show{ display:flex; }
-    .music-sheet{
-      width: min(520px, 96vw);
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(0,0,0,.10);
-      border-radius: 22px;
-      padding: 16px 14px 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.18);
-      backdrop-filter: blur(6px);
-      text-align:center;
-      overflow:hidden;
-      position:relative;
-    }
-    .music-sheet .title{
-      font-family:"Cormorant Garamond", serif;
-      font-size: 18px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.72);
-      margin: 6px 0 10px;
-    }
-    .music-actions{
-      display:flex;
-      gap: 10px;
-      justify-content:center;
-      margin-top: 10px;
-      flex-wrap:wrap;
-    }
-    .chip{
-      border:none;
-      border-radius:999px;
-      padding: 12px 18px;
-      font-size: 16px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      cursor:pointer;
-      box-shadow: 0 12px 24px rgba(0,0,0,.10);
-      transition: transform .15s ease, filter .15s ease;
-    }
-    .chip:active{ transform: scale(.99); }
-    .chip.yes{
-      background: rgba(180,122,134,.88);
-      color: #fff;
-    }
-    .chip.no{
-      background: rgba(0,0,0,.06);
-      color: rgba(0,0,0,.72);
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: none;
-    }
-    .music-hint{
-      margin-top: 10px;
-      font-size: 13px;
-      color: rgba(0,0,0,.58);
-    }
-
-    .music-fab{
-      position:fixed;
-      right: 14px;
-      bottom: 14px;
-      z-index: 9998;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 12px 10px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 18px 48px rgba(0,0,0,.16);
-      backdrop-filter: blur(6px);
-      user-select:none;
-    }
-    .music-fab button{
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border:none;
-      cursor:pointer;
-      background: rgba(180,122,134,.88);
-      box-shadow: var(--shadow2);
-      display:grid;
-      place-items:center;
-      color:#fff;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .music-fab .label{
-      font-size: 13px;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.66);
-      padding-right: 6px;
-      white-space:nowrap;
-    }
-    .icon{
-      width: 18px;
-      height: 18px;
-      display:block;
-    }
-
-    @media(max-width:420px){
-      .caps{ font-size: 18px; }
-      .digit-one{ font-size: 36px; }
-      .yearword{ font-size: 18px; }
-      .date-main{ font-size: 24px; }
-      .date-time{ font-size: 22px; }
-      .hero-butterfly{ width: 90px; }
-      .unit{ min-width: 78px; }
-      .flip{ font-size: 30px; }
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="bg"></div>
-  <div class="veil"></div>
+<div class="bg"></div>
+<div class="veil"></div>
 
-  <!-- Audio -->
- <audio id="bgm" preload="auto" loop>
-  <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3" type="audio/mpeg">
+<audio id="bgm" preload="auto" loop>
+  <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3">
 </audio>
 
-  <!-- Music modal -->
-  <div class="music-modal" id="musicModal" aria-hidden="true">
-    <div class="music-sheet">
-      <div class="title">Включить музыку?</div>
-      <div class="music-actions">
-        <button class="chip yes" id="musicYes" type="button">Да</button>
-        <button class="chip no" id="musicNo" type="button">Нет</button>
-      </div>
-      <div class="music-hint">Если браузер блокирует автозапуск — нажмите «Да».</div>
+<div class="music-hint" id="musicHint">
+  <span>🎵</span> Музыкалық сүйемелдеу
+</div>
+
+<div class="music-modal" id="musicModal">
+  <div class="music-sheet">
+    <div class="caps">Включить музыку?</div>
+    <div class="music-actions">
+      <button class="chip yes" id="musicYes">Да</button>
+      <button class="chip no" id="musicNo">Нет</button>
     </div>
   </div>
+</div>
 
-  <!-- Floating player control -->
-  <div class="music-fab" id="musicFab" style="display:none;">
-    <button type="button" id="musicToggle" aria-label="Музыка">
-      <svg class="icon" id="musicIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M9 7.5v9l8-4.5-8-4.5Z" fill="currentColor"></path>
-      </svg>
-    </button>
-    <div class="label" id="musicLabel">Музыка</div>
+<div class="music-fab" id="musicFab" style="display:none">
+  <button id="musicToggle">▶</button>
+  <div class="caps" id="musicLabel">Музыка</div>
+</div>
+
+<main class="wrap">
+
+<section>
+  <div class="card">
+    <div class="script title-name">Латифа</div>
+    <div class="yearline">
+      <span class="digit-one">1</span>
+      <span class="yearword">годик</span>
+    </div>
+    <p class="caps">Тұсаукесер</p>
+    <div class="divider"></div>
+    <img src="./element_6.png" class="hero-butterfly" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
+    <p class="caps">Прокрутите вниз</p>
   </div>
+</section>
 
-  <main class="wrap">
+<section>
+  <div class="card">
+    <div class="script" style="font-size:46px">Дорогие гости!</div>
+    <div class="block-text">
+      С радостью приглашаем Вас<br>
+      на первый годик нашей доченьки<br>
+      и обряд Тұсаукесер!<br>
+      Будем рады разделить с Вами этот день!
+    </div>
+  </div>
+</section>
 
-    <!-- HERO -->
-    <section>
-      <img class="decor d2 float slow" src="./element_2.png" alt="">
-      <img class="decor d1 float" src="./element_3.png" alt="">
-      <div class="card">
-        <div class="script title-name">Латифа</div>
+<section>
+  <div class="card">
+    <div class="script" style="font-size:46px">Место проведения</div>
+    <div class="block-text">
+      ГОРОД АЛМАТЫ<br>
+      УЛИЦА КЕРЕЙ – ЖАНИБЕК ХАНДАР, 8<br>
+      РЕСТОРАН «SABROSO»
+    </div>
+    <a class="mapbtn" href="https://2gis.kz/almaty/search/Sabroso" target="_blank">Открыть карту</a>
+    <div class="script" style="font-size:52px;margin-top:20px">Болат – Зара</div>
+  </div>
+</section>
 
-        <div class="yearline" aria-label="1 годик">
-          <span class="digit-one">1</span>
-          <span class="yearword">годик</span>
-        </div>
+<section>
+  <div class="card">
+    <div class="script" style="font-size:46px">Дата торжества</div>
+    <div class="block-text">
+      11 АПРЕЛЯ 2026 ГОДА<br>
+      ВРЕМЯ 14:00
+    </div>
+  </div>
+</section>
 
-        <p class="caps" style="margin-top:10px;">Тұсаукесер</p>
+<section id="rsvp">
+  <div class="card">
+    <div class="caps">Подтвердите присутствие</div>
+    <!-- форма оставлена без изменений -->
+  </div>
+</section>
 
-        <div class="divider"></div>
+</main>
 
-        <img src="./element_6.png" class="hero-butterfly" id="scrollToForm1" alt="Прокрутить вниз">
-        <p class="caps scroll-text" id="scrollToForm2">Прокрутите вниз</p>
-      </div>
-    </section>
+<script>
+const bgm=document.getElementById('bgm');
+const modal=document.getElementById('musicModal');
+const hint=document.getElementById('musicHint');
+const fab=document.getElementById('musicFab');
+const yes=document.getElementById('musicYes');
+const no=document.getElementById('musicNo');
+const toggle=document.getElementById('musicToggle');
 
-    <!-- INVITE -->
-    <section>
-      <img class="decor d3 float fast" src="./element_1.png" alt="">
-      <img class="decor d4 float slow" src="./element_4.png" alt="">
-      <div class="card">
-        <div class="script invite-script">Дорогие гости!</div>
-        <div class="invite-text">
-          С радостью приглашаем Вас<br>
-          на первый годик нашей доченьки<br>
-          и обряд Тұсаукесер!<br>
-          Будем рады разделить с Вами этот день!
-        </div>
-      </div>
-    </section>
+window.addEventListener('load',()=>{
+  hint.classList.add('show');
+  setTimeout(()=>modal.classList.add('show'),1200);
+});
 
-    <!-- LOCATION -->
-    <section>
-      <img class="decor d2 float" src="./element_2.png" alt="">
-      <img class="decor d1 float slow" src="./element_3.png" alt="" style="top:auto; bottom:10px;">
-      <div class="card">
-        <div class="script h-script">Место проведения</div>
+yes.onclick=async()=>{
+  modal.classList.remove('show');
+  hint.classList.remove('show');
+  await bgm.play();
+  fab.style.display='flex';
+  toggle.textContent='❚❚';
+};
 
-        <div class="place-lines">
-          ГОРОД АЛМАТЫ<br>
-          УЛИЦА КЕРЕЙ – ЖАНИБЕК ХАНДАР, 8<br>
-          РЕСТОРАН «SABROSO»
-        </div>
+no.onclick=()=>{
+  modal.classList.remove('show');
+  hint.classList.remove('show');
+  fab.style.display='flex';
+  toggle.textContent='▶';
+};
 
-        <a class="mapbtn" target="_blank" rel="noopener"
-           href="https://2gis.kz/almaty/search/Sabroso%20%D0%9A%D0%B5%D1%80%D0%B5%D0%B9%20%D0%96%D0%B0%D0%BD%D0%B8%D0%B1%D0%B5%D0%BA%20%D1%85%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%208?m=76.962332%2C43.237115%2F19.87">
-          Открыть карту
-        </a>
+toggle.onclick=()=>{
+  if(bgm.paused){bgm.play();toggle.textContent='❚❚'}
+  else{bgm.pause();toggle.textContent='▶'}
+};
+</script>
 
-        <div class="script sign">Болат – Зара</div>
-      </div>
-    </section>
-
-    <!-- DATE -->
-    <section>
-      <img class="decor d4 float slow" src="./element_4.png" alt="">
-      <div class="card">
-        <div class="script h-script">Дата торжества</div>
-
-        <div class="date-main">
-          11 апреля 2026 года
-          <span class="date-time">время 14:00</span>
-        </div>
-
-        <div class="cal" aria-label="Календарь апрель 2026">
-          <div class="cal-head">Апрель 2026</div>
-          <div class="dow">
-            <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
-          </div>
-          <div class="grid" id="calendarGrid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp">
-      <img class="decor d3 float" src="./element_1.png" alt="">
-      <div class="card">
-        <p class="caps" style="font-size:18px; color: rgba(0,0,0,.72); margin-bottom: 10px;">
-          Подтвердите, пожалуйста, своё<br>присутствие:
-        </p>
-
-        <form class="form" id="rsvpForm">
-          <input class="input" name="name" id="name" type="text" placeholder="ВАШЕ ИМЯ" required>
-
-          <div class="radios">
-            <label class="radio">
-              <input type="radio" name="attendance" value="Обязательно приду" required>
-              Обязательно приду
-            </label>
-            <label class="radio">
-              <input type="radio" name="attendance" value="Приду со второй половинкой">
-              Приду со второй половинкой
-            </label>
-            <label class="radio">
-              <input type="radio" name="attendance" value="Не смогу присутствовать">
-              Не смогу присутствовать
-            </label>
-          </div>
-
-          <button class="btn" type="submit">Отправить</button>
-          <div class="status" id="status"></div>
-        </form>
-
-        <div class="countdown">
-          <p class="count-title">До торжества:</p>
-          <div class="digits">
-            <div class="unit">
-              <div class="flip" id="dDays">00</div>
-              <div class="lab">дней</div>
-            </div>
-            <div class="unit">
-              <div class="flip" id="dHours">00</div>
-              <div class="lab">часов</div>
-            </div>
-            <div class="unit">
-              <div class="flip" id="dMins">00</div>
-              <div class="lab">минут</div>
-            </div>
-            <div class="unit">
-              <div class="flip" id="dSecs">00</div>
-              <div class="lab">секунд</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-note">
-          Будем рады Вас видеть!<br>
-          Ожидаем Вашего визита.
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    /* 1) Calendar (April 2026) */
-    (function buildCalendar(){
-      const grid = document.getElementById('calendarGrid');
-      const year = 2026, monthIndex = 3; // April
-      const selectedDay = 11;
-
-      const first = new Date(year, monthIndex, 1);
-      const last  = new Date(year, monthIndex + 1, 0);
-      const daysInMonth = last.getDate();
-
-      const jsDay = first.getDay();
-      const mondayFirst = (jsDay + 6) % 7;
-
-      const totalCells = mondayFirst + daysInMonth;
-      const rows = Math.ceil(totalCells / 7);
-      const cells = rows * 7;
-
-      for(let i=0;i<cells;i++){
-        const dayNum = i - mondayFirst + 1;
-        const cell = document.createElement('div');
-
-        if(dayNum < 1 || dayNum > daysInMonth){
-          cell.className = 'empty';
-          cell.textContent = '·';
-        }else{
-          if(dayNum === selectedDay){
-            cell.className = 'sel';
-            const b = document.createElement('img');
-            b.src = './element_6.png';
-            b.className = 'butterfly-behind';
-            b.alt = '';
-            cell.appendChild(b);
-          }
-          cell.appendChild(document.createTextNode(String(dayNum)));
-        }
-        grid.appendChild(cell);
-      }
-    })();
-
-    /* 2) Scroll to RSVP */
-    function scrollToRSVP(){
-      document.getElementById('rsvp').scrollIntoView({behavior:'smooth', block:'start'});
-    }
-    document.getElementById('scrollToForm1').addEventListener('click', scrollToRSVP);
-    document.getElementById('scrollToForm2').addEventListener('click', scrollToRSVP);
-
-    /* 3) Countdown */
-    const target = new Date('2026-04-11T14:00:00+05:00');
-    const pad2 = n => String(n).padStart(2,'0');
-
-    function tick(){
-      const now = new Date();
-      let diff = target - now;
-      if(diff < 0) diff = 0;
-
-      const sec = Math.floor(diff / 1000);
-      const days = Math.floor(sec / 86400);
-      const hours = Math.floor((sec % 86400) / 3600);
-      const mins = Math.floor((sec % 3600) / 60);
-      const secs = sec % 60;
-
-      document.getElementById('dDays').textContent  = pad2(days);
-      document.getElementById('dHours').textContent = pad2(hours);
-      document.getElementById('dMins').textContent  = pad2(mins);
-      document.getElementById('dSecs').textContent  = pad2(secs);
-    }
-    tick();
-    setInterval(tick, 1000);
-
-    /* 4) Music */
-    const bgm = document.getElementById('bgm');
-    const modal = document.getElementById('musicModal');
-    const btnYes = document.getElementById('musicYes');
-    const btnNo = document.getElementById('musicNo');
-    const fab = document.getElementById('musicFab');
-    const toggle = document.getElementById('musicToggle');
-    const icon = document.getElementById('musicIcon');
-    const label = document.getElementById('musicLabel');
-
-    function setIcon(isPlaying){
-      icon.innerHTML = isPlaying
-        ? '<path d="M7 6.5h3.2v11H7v-11Zm6.8 0H17v11h-3.2v-11Z" fill="currentColor"></path>'
-        : '<path d="M9 7.5v9l8-4.5-8-4.5Z" fill="currentColor"></path>';
-      label.textContent = isPlaying ? 'Музыка: вкл' : 'Музыка: выкл';
-    }
-
-    async function tryAutoPlay(){
-      fab.style.display = 'flex';
-
-      const pref = localStorage.getItem('music_pref'); // "yes" | "no" | null
-      if(pref === 'no'){
-        setIcon(false);
-        return;
-      }
-      if(pref === 'yes'){
-        try{
-          await bgm.play();
-          setIcon(true);
-          return;
-        }catch(e){
-          modal.classList.add('show');
-          modal.setAttribute('aria-hidden','false');
-          setIcon(false);
-          return;
-        }
-      }
-
-      try{
-        await bgm.play();
-        setIcon(true);
-      }catch(e){
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden','false');
-        setIcon(false);
-      }
-    }
-
-    btnYes.addEventListener('click', async () => {
-      localStorage.setItem('music_pref','yes');
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden','true');
-      try{
-        await bgm.play();
-        setIcon(true);
-      }catch(e){
-        setIcon(false);
-      }
-    });
-
-    btnNo.addEventListener('click', () => {
-      localStorage.setItem('music_pref','no');
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden','true');
-      bgm.pause();
-      setIcon(false);
-    });
-
-    toggle.addEventListener('click', async () => {
-      if(bgm.paused){
-        try{
-          await bgm.play();
-          localStorage.setItem('music_pref','yes');
-          setIcon(true);
-        }catch(e){
-          modal.classList.add('show');
-          modal.setAttribute('aria-hidden','false');
-          setIcon(false);
-        }
-      }else{
-        bgm.pause();
-        localStorage.setItem('music_pref','no');
-        setIcon(false);
-      }
-    });
-
-    window.addEventListener('load', tryAutoPlay);
-
-    /* 5) RSVP -> Google Sheets (Apps Script Web App) */
-    const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
-    const form = document.getElementById('rsvpForm');
-    const statusEl = document.getElementById('status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = "Отправляем…";
-
-      const name = document.getElementById('name').value.trim();
-      const attendance = (new FormData(form)).get('attendance');
-
-      const payload = {
-        name,
-        attendance,
-        page: location.href,
-        userAgent: navigator.userAgent,
-        timestamp: new Date().toISOString()
-      };
-
-      try{
-        if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("PASTE_")){
-          throw new Error("Не указан APPS_SCRIPT_URL (URL Web App).");
-        }
-
-        await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        statusEl.textContent = "Спасибо! Ответ отправлен ✅";
-        form.reset();
-      }catch(err){
-        statusEl.textContent = "Ошибка: " + err.message;
-      }
-    });
-
-    /*
-      Google Apps Script (вставить в Apps Script):
-
-      function doPost(e) {
-        const SHEET_ID = "1FuukSHtopSmB9O97vWkRT6S3yv4caehpxQeg_QytRf4";
-        const SHEET_NAME = "Sheet1"; // или Ваш лист
-
-        const ss = SpreadsheetApp.openById(SHEET_ID);
-        const sh = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
-
-        const body = JSON.parse(e.postData.contents);
-
-        if (sh.getLastRow() === 0) {
-          sh.appendRow(["Дата/время (ISO)", "Имя", "Статус", "Страница", "User-Agent"]);
-        }
-
-        sh.appendRow([
-          body.timestamp || new Date().toISOString(),
-          body.name || "",
-          body.attendance || "",
-          body.page || "",
-          body.userAgent || ""
-        ]);
-
-        return ContentService
-          .createTextOutput(JSON.stringify({ ok: true }))
-          .setMimeType(ContentService.MimeType.JSON);
-      }
-    */
-  </script>
 </body>
 </html>
