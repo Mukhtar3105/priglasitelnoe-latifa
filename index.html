@@ -7,43 +7,47 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --rose:#b47a86;
   --rose2:#a96f7a;
   --ink:#2b2b2b;
-  --card:rgba(255,255,255,.6);
+  --card:rgba(255,255,255,.62);
 }
 
 *{box-sizing:border-box}
-body{
+
+html,body{
   margin:0;
+  min-height:100%;
+}
+
+body{
   font-family:"Cormorant Garamond",serif;
-  background:#fff;
   color:var(--ink);
   overflow-x:hidden;
 }
 
-/* background */
+/* ===== BACKGROUND (исправлено) ===== */
 .bg{
   position:fixed;
   inset:0;
-  background:url("./Background.png") center/cover no-repeat fixed;
+  background:url("./Background.png") center/cover no-repeat;
   z-index:-3;
 }
 .veil{
   position:fixed;
   inset:0;
-  background:radial-gradient(1000px 700px at 50% 30%, rgba(255,255,255,.6), rgba(255,255,255,.15));
+  background:radial-gradient(1200px 800px at 50% 30%, rgba(255,255,255,.65), rgba(255,255,255,.18));
   z-index:-2;
 }
 
 .wrap{
   max-width:580px;
   margin:auto;
-  padding-bottom:160px;
+  padding:20px 0 160px;
 }
 
 section{
@@ -55,10 +59,11 @@ section{
 .card{
   background:var(--card);
   border-radius:22px;
-  padding:24px 18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  padding:26px 18px;
+  box-shadow:0 12px 32px rgba(0,0,0,.12);
 }
 
+/* ===== DECOR ===== */
 .decor{
   position:absolute;
   pointer-events:none;
@@ -71,15 +76,15 @@ section{
 }
 .dl{left:-60px;top:20px;width:200px}
 .dr{right:-60px;top:40px;width:200px}
-.db{left:-60px;bottom:20px;width:200px}
 
+/* ===== TEXT ===== */
 .script{
   font-family:"Great Vibes",cursive;
   color:var(--rose);
 }
 
 .title-name{
-  font-size:76px;
+  font-size:78px;
   line-height:1;
 }
 
@@ -90,14 +95,14 @@ section{
   font-size:20px;
 }
 
-/* ✅ КРАСИВАЯ ЦИФРА 1 В ТЕКСТЕ */
+/* ✅ КРАСИВАЯ ЦИФРА 1 */
 .one-decor{
-  font-family:"Playfair Display SC",serif;
-  font-size:42px;
+  font-family:"Great Vibes",cursive;
+  font-size:52px;
   font-weight:400;
   color:var(--rose);
-  margin-right:4px;
-  text-shadow:0 4px 14px rgba(180,122,134,.25);
+  margin-right:6px;
+  vertical-align:middle;
 }
 
 .divider{
@@ -107,10 +112,10 @@ section{
   background:rgba(0,0,0,.2);
 }
 
-/* butterfly */
+/* ===== BUTTERFLY ===== */
 .hero-butterfly{
-  width:92px;
-  margin:12px auto 0;
+  width:96px;
+  margin:14px auto 0;
   cursor:pointer;
   animation:bob 2.6s ease-in-out infinite;
 }
@@ -119,16 +124,18 @@ section{
   50%{transform:translateY(8px)}
 }
 
+/* ===== INVITE ===== */
 .invite{
-  font-size:21px;
+  font-size:22px;
   letter-spacing:.1em;
   text-transform:uppercase;
-  margin-top:14px;
+  margin-top:16px;
+  line-height:1.55;
 }
 
-/* calendar */
+/* ===== CALENDAR ===== */
 .cal{
-  margin-top:18px;
+  margin-top:20px;
   border-radius:18px;
   overflow:hidden;
   background:rgba(255,255,255,.45);
@@ -137,7 +144,10 @@ section{
   display:grid;
   grid-template-columns:repeat(7,1fr);
 }
-.dow div{padding:10px 0;font-size:14px}
+.dow div{
+  padding:10px 0;
+  font-size:14px;
+}
 .grid div{
   padding:16px 0;
   font-size:22px;
@@ -158,13 +168,13 @@ section{
   position:absolute;
   left:50%;
   top:50%;
-  width:56px;
-  transform:translate(-50%,-75%);
+  width:58px;
+  transform:translate(-50%,-78%);
   z-index:-2;
   animation:float 3s ease-in-out infinite;
 }
 
-/* form */
+/* ===== FORM ===== */
 form{display:grid;gap:14px;margin-top:14px}
 input,button{
   padding:14px;
@@ -178,22 +188,22 @@ button{
   border:none;
 }
 
-/* 🎵 music */
+/* ===== MUSIC PLAYER ===== */
 .music{
   position:fixed;
   bottom:16px;
   left:50%;
   transform:translateX(-50%);
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.88);
   border-radius:999px;
   padding:10px 16px;
   display:flex;
   gap:10px;
   align-items:center;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
 }
 .music button{
-  width:40px;height:40px;
+  width:42px;height:42px;
   border-radius:50%;
   border:none;
   cursor:pointer;
@@ -222,13 +232,13 @@ button{
   <p class="caps">Тұсаукесер</p>
   <div class="divider"></div>
   <img src="./element_6.png" class="hero-butterfly" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
-  <p class="caps" style="margin-top:22px">Прокрутите вниз</p>
+  <p class="caps" style="margin-top:24px">Прокрутите вниз</p>
 </div>
 </section>
 
 <section>
 <div class="card">
-  <div class="script" style="font-size:46px">Дорогие гости!</div>
+  <div class="script" style="font-size:48px">Дорогие гости!</div>
   <div class="invite">
     С радостью приглашаем Вас<br>
     на первый годик нашей доченьки<br>
@@ -239,7 +249,7 @@ button{
 
 <section>
 <div class="card">
-  <div class="script" style="font-size:46px">Дата торжества</div>
+  <div class="script" style="font-size:48px">Дата торжества</div>
   <div class="invite">11 апреля 2026 года<br>время 14:00</div>
 
   <div class="cal">
@@ -274,7 +284,8 @@ button{
 
 </main>
 
-<audio id="music" loop>
+<!-- 🎵 AUDIO (корректный автозапуск) -->
+<audio id="music" muted autoplay loop playsinline>
   <source src="./Серік Ибрагимов feat. Еркеш Хасен - Қызым (Live).mp3">
 </audio>
 
@@ -284,14 +295,19 @@ button{
 </div>
 
 <script>
-const music=document.getElementById("music");
-let playing=true;
+const music = document.getElementById("music");
 
-music.play().catch(()=>{});
+/* после первого взаимодействия включаем звук */
+document.addEventListener("click",()=>{
+  if(music.muted){
+    music.muted=false;
+    music.play().catch(()=>{});
+  }
+},{once:true});
 
 function toggle(){
-  if(music.paused){music.play();playing=true}
-  else{music.pause();playing=false}
+  if(music.paused) music.play();
+  else music.pause();
 }
 function stopMusic(){
   music.pause();
